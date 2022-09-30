@@ -65,7 +65,7 @@ void Init(void)
 	//-----------------------------------------------------
 	
 	//âÊëúÇÃì«Ç›çûÇ›Ç∆ìoò^
-	ADD_RESOURCE("Player", CImage::CreateImage("Image/Player.png", player_anim_data, 256, 256));
+	ADD_RESOURCE("Player", CImage::CreateImage("Image/Player.png", player_anim_data,64, 64));
 	//ADD_RESOURCE("Enemy", CImage::CreateImage("Image/Enemy.png", enemy_anim_data, 256, 256));
 	ADD_RESOURCE("Sky", CImage::CreateImage("Image/Sky.png"));
 	ADD_RESOURCE("Town", CImage::CreateImage("Image/Town.png"));

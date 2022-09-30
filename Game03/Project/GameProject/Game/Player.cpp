@@ -12,16 +12,17 @@ Player::Player(const CVector2D& p, bool flip) :
 	Base(eType_Player) {
 	//画像複製
 	m_img = COPY_RESOURCE("Player", CImage);
+	m_img.SetSize(224, 224);
 	//再生アニメーション設定
 	m_img.ChangeAnimation(0);
 	//座標設定
 	m_pos_old = m_pos = p;
 	//中心位置設定
-	m_img.SetCenter(128, 224);
+	m_img.SetCenter(112, 192);
 	//反転フラグ
 	m_flip = flip;
 
-	m_rect = CRect(-32, -128, 32, 0);
+	m_rect = CRect(-28, -124, 28, 0);
 	//通常状態へ
 	m_state = eState_Idle;
 	//着地フラグ
@@ -44,7 +45,7 @@ void Player::Update() {
 	//アニメーション更新
 	m_img.UpdateAnimation();
 	//スクロール設定
-	m_scroll.x = m_pos.x - 1280 / 2;
+	m_scroll.x = m_pos.x - 1280 / 6;
 	m_scroll.y = m_pos.y - 600;
 	switch (m_state) {
 		//通常状態
@@ -148,9 +149,9 @@ void Player::Collision(Base* b)
 void Player::StateIdle()
 {
 	//移動量
-	const float move_speed = 6;
+	const float move_speed = 12;
 	//ジャンプ力
-	const float jump_pow = 12;
+	const float jump_pow = 20;
 	//移動フラグ
 	bool move_flag = false;
 	//左移動
@@ -174,13 +175,14 @@ void Player::StateIdle()
 		m_vec.y = -jump_pow;
 		m_is_ground = false;
 	}
+	/*
 	//攻撃
 	if (PUSH(CInput::eButton1)) {
 		//攻撃状態へ移行
 		m_state = eState_Attack;
 		m_attack_no++;
 	}
-	
+	*/
 
 	
 	//ジャンプ中なら
