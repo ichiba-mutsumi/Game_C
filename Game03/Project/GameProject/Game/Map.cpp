@@ -57,15 +57,15 @@ int Map::GetTip(const CVector2D& pos)
 int Map::GetTip(int col, int raw) {
 	return stage1data[raw][col];
 }
-
-int Map::CollisionMap(const CVector2D& pos) {
+/*
+int Map::CollisionMap(const CVector2D& pos, const CRect& rect) {
 	//ÇPì_ÇÃÇ›åüèÿ
 	int t = GetTip(pos);
 	if (t != 0)return t;
 	return  0;
 }
-
-int Map::CollisonMap(const CVector2D& pos, const CRect& rect)
+*/
+int Map::CollisionMap(const CVector2D& pos, const CRect& rect)
 {	//ç∂è„
 	int t = GetTip(CVector2D(pos.x + rect.m_left, pos.y + rect.m_top));
 	if (t != 0) return t;
