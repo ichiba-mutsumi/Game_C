@@ -7,7 +7,7 @@ Item::Item(const CVector2D& pos) :Base(eType_Item)
 	//座標設定
 	m_pos = pos;
 	//表示サイズ設定
-	m_img.SetSize(100, 128);
+	m_img.SetSize(64, 128);
 	//中心位置設定
 	m_img.SetCenter(32, 128);
 	//当たり判定用矩形
