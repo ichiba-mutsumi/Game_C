@@ -16,7 +16,7 @@ void UI::Draw() {
 		m_img.SetPos(200 - 16 * i, 0);
 		m_img.Draw();
 	}
-	Base* enemy = Base::FindObject(eType_Enemy);
+	
 
 	//“G‚ª‚¢‚È‚¯‚ê‚Î
 	/*if (enemy == nullptr) {

@@ -32,6 +32,12 @@
     <ClCompile Include="Game\Map.cpp">
       <Filter>Game</Filter>
     </ClCompile>
+<<<<<<< HEAD
+=======
+    <ClCompile Include="Game\Item.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+>>>>>>> 14cdc9cdbfa698c12bf1f8669b280490017c8f1a
     <ClCompile Include="Game\GameData.cpp">
       <Filter>Game</Filter>
     </ClCompile>
@@ -81,6 +87,12 @@
     <ClInclude Include="Game\Map.h">
       <Filter>Game</Filter>
     </ClInclude>
+<<<<<<< HEAD
+=======
+    <ClInclude Include="Game\Item.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+>>>>>>> 14cdc9cdbfa698c12bf1f8669b280490017c8f1a
     <ClInclude Include="Game\GameData.h">
       <Filter>Game</Filter>
     </ClInclude>
