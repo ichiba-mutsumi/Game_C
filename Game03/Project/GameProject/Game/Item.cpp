@@ -1,4 +1,5 @@
 #include "Item.h"
+#include "GameData.h"
 
 Item::Item(const CVector2D& pos) :Base(eType_Item)
 {
@@ -27,6 +28,7 @@ void Item::Collision(Base* b)
 	switch (b->m_type) {
 	case eType_Player:
 		if (Base::CollisionRect(this, b)) {
+			GameData::s_score += 1;
 			SetKill();
 		}
 		break;

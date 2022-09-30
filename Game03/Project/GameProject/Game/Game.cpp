@@ -17,6 +17,7 @@ Game::Game() :Base(eType_Scene)
 	//Base::Add(new Enemy(CVector2D(1280 + 256 * 3, 540), true));
 	Base::Add(new Goal(CVector2D(2048, 540)));
 	Base::Add(new Item(CVector2D(2048, 940)));
+
 	Base::Add(new UI());
 }
 
