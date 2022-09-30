@@ -7,7 +7,8 @@
 //#include "Game/Enemy.h"
 #include "Game/Player.h"
 #include "Game/Field.h"
-
+#include"Game/UI.h"
+#include "Game/GameData.h"
 #include "Title/Title.h"
 
 
@@ -76,6 +77,7 @@ void Init(void)
 	ADD_RESOURCE("Effect_Blood", CImage::CreateImage("Image/Effect_Blood.png", effect_blood_anim_data, 128, 128));
 	ADD_RESOURCE("Goal", CImage::CreateImage("Image/Goal.png"));
 	ADD_RESOURCE("Title", CImage::CreateImage("Image/Title.png"));
+//ADD_RESOURCE("Item", CImage::CreateImage("Image/Item.png"));
 	/*//プレイヤーの生成
 	Base::Add(new Player(CVector2D(200, 500), false));
 	//フィールドの生成
@@ -84,6 +86,7 @@ void Init(void)
 	Base::Add(new Enemy(CVector2D(800, 500), true));
 	*/
 	Base::Add(new Title());
+	//Base::Add(new UI());
 	/*
 	//画像の事前読み込み
 	ADD_RESOURCE("Title", CImage::CreateImage("Image/Title.png"));

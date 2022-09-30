@@ -5,6 +5,7 @@
 #include "Effect.h"
 #include "Game.h"
 #include "Map.h"
+#include "Item.h"
 #include "../Base/Base.h"
 #include "../Title/Title.h"
 
@@ -93,7 +94,8 @@ void Player::Collision(Base* b)
 	switch (b->m_type) {
 		//ƒS[ƒ‹”»’è
 	case eType_Goal:
-		if (Base::CollisionRect(this, b)) {
+		 eType_Item:
+	if (Base::CollisionRect(this, b)) {
 			b->SetKill();
 		}
 		break;
