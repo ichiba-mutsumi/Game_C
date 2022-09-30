@@ -5,6 +5,7 @@
 #include "Goal.h"
 #include "Map.h"
 #include "../Title/Title.h"
+#include "UI.h"
 
 Game::Game() :Base(eType_Scene)
 {
@@ -15,7 +16,7 @@ Game::Game() :Base(eType_Scene)
 	//Base::Add(new Enemy(CVector2D(1280 + 256 * 2, 540), true));
 	//Base::Add(new Enemy(CVector2D(1280 + 256 * 3, 540), true));
 	Base::Add(new Goal(CVector2D(2048, 540)));
-
+	Base::Add(new UI());
 }
 
 

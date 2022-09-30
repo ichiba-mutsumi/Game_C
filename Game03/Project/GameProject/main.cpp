@@ -7,7 +7,8 @@
 //#include "Game/Enemy.h"
 #include "Game/Player.h"
 #include "Game/Field.h"
-
+#include"Game/UI.h"
+#include "Game/GameData.h"
 #include "Title/Title.h"
 
 
@@ -84,6 +85,7 @@ void Init(void)
 	Base::Add(new Enemy(CVector2D(800, 500), true));
 	*/
 	Base::Add(new Title());
+	//Base::Add(new UI());
 	/*
 	//‰æ‘œ‚Ì–‘O“Ç‚İ‚İ
 	ADD_RESOURCE("Title", CImage::CreateImage("Image/Title.png"));
