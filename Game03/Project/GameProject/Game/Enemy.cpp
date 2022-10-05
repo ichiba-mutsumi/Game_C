@@ -20,7 +20,8 @@ Base(eType_Enemy) {
 	m_img.SetCenter(48, 96);
 	//座標設定
 	m_pos_old = m_pos = p;
-	m_down = false;
+	//m_down = false;
+	
 }
 
 void Enemy::Update()
@@ -31,12 +32,8 @@ void Enemy::Update()
 	m_img.UpdateAnimation();
 	//重力による落下
 	m_vec.y += GRAVITY;
-	int i = 0;
-	while(m_down&&i<1000) {
-		i % 60;
-		m_img.SetAng(DtoR(i));
-		i++;
-	}
+	
+	
 
 }
 
@@ -48,6 +45,7 @@ void Enemy::Draw()
 	m_img.SetFlipH(m_flip);
 	//描画
 	m_img.Draw();
+	//当たり判定矩形の表示
 	DrawRect();
 }
 
@@ -57,8 +55,9 @@ void Enemy::Collision(Base* b)
 	case eType_Player:
 		if (Base::CollisionRect(this, b)) {
 			m_img.ChangeAnimation(eAnimDown);
-			m_down = true;
-			
+			//m_down = true;
+			SetKill();
+		Base::Add(new Effect("Effect_Smoke", m_pos + CVector2D(0, -128), m_flip));
 		}
 		break;
 	}
