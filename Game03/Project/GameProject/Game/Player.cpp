@@ -8,6 +8,7 @@
 #include "Item.h"
 #include "../Base/Base.h"
 #include "../Title/Title.h"
+#include"../Game/Attack.h"
 
 Player::Player(const CVector2D& p, bool flip) :
 	Base(eType_Player) {
@@ -180,7 +181,7 @@ void Player::StateIdle()
 	
 	//UŒ‚
 	if (PUSH(CInput::eButton1)) {
-
+		Base::Add(new Attack(eType_Player_Attack, m_pos, m_ang, 4));
 		//UŒ‚ó‘Ô‚ÖˆÚs
 		//m_state = eState_Attack;
 		//m_attack_no++;

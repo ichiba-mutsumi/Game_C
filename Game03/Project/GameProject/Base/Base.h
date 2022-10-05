@@ -29,6 +29,8 @@ public:
 	float m_rad;
 	//移動ベクトル
 	CVector2D m_vec;
+	//回転値
+	float m_ang;
 	//スクロール値
 	static CVector2D m_scroll;
 

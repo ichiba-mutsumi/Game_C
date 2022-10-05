@@ -67,7 +67,7 @@ void Init(void)
 	
 	//âÊëúÇÃì«Ç›çûÇ›Ç∆ìoò^
 	ADD_RESOURCE("Player", CImage::CreateImage("Image/Player.png", player_anim_data,64, 64));
-	//ADD_RESOURCE("Enemy", CImage::CreateImage("Image/Enemy.png", enemy_anim_data, 256, 256));
+	ADD_RESOURCE("Enemy", CImage::CreateImage("Image/Enemy.png", enemy_anim_data, 48, 48));
 	ADD_RESOURCE("Sky", CImage::CreateImage("Image/Sky.png"));
 	ADD_RESOURCE("Town", CImage::CreateImage("Image/Town.png"));
 	ADD_RESOURCE("ForeGround", CImage::CreateImage("Image/ForeGround.png"));
@@ -77,6 +77,7 @@ void Init(void)
 	ADD_RESOURCE("Effect_Blood", CImage::CreateImage("Image/Effect_Blood.png", effect_blood_anim_data, 128, 128));
 	ADD_RESOURCE("Goal", CImage::CreateImage("Image/Goal.png"));
 	ADD_RESOURCE("Title", CImage::CreateImage("Image/Title.png"));
+	ADD_RESOURCE("ball", CImage::CreateImage("Image/ball.png"));
 //ADD_RESOURCE("Item", CImage::CreateImage("Image/Item.png"));
 	/*//ÉvÉåÉCÉÑÅ[ÇÃê∂ê¨
 	Base::Add(new Player(CVector2D(200, 500), false));
