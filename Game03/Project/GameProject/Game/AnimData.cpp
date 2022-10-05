@@ -295,11 +295,8 @@ static TexAnim enemyDeath[] = {
 };
 
 static TexAnim enemyDown[] = {
-	{ 104,4 },
-	{ 105,4 },
-	{ 106,4 },
-	{ 107,4 },
-	{ 108,4 },
+	{ 4,2 },
+	
 };
 static TexAnim enemyDownGround[] = {
 	{ 109,4 },

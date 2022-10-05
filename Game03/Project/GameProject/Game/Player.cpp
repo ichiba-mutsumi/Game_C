@@ -69,8 +69,10 @@ void Player::Update() {
 	
 	}
 	//óéÇøÇƒÇ¢ÇΩÇÁóéâ∫íÜèÛë‘Ç÷à⁄çs
-	if (m_is_ground && m_vec.y > GRAVITY * 4)
+	if (m_is_ground && m_vec.y > GRAVITY * 4) {
 		m_is_ground = false;
+
+	}
 	//èdóÕÇ…ÇÊÇÈóéâ∫
 	m_vec.y += GRAVITY;
 	m_pos += m_vec;
@@ -132,10 +134,10 @@ void Player::Collision(Base* b)
 	}
 }*/
 		if (Map* m = dynamic_cast<Map*>(b)) {
-			int t = m->CollisionMap(CVector2D(m_pos.x, m_pos_old.y));
+			int t = m->CollisionMap(CVector2D(m_pos.x, m_pos_old.y), m_rect);
 			if (t != 0)
 				m_pos.x = m_pos_old.x;
-			t = m->CollisionMap(CVector2D(m_pos_old.x, m_pos.y));
+			t = m->CollisionMap(CVector2D(m_pos_old.x, m_pos.y), m_rect);
 			if (t != 0) {
 				m_pos.y = m_pos_old.y;
 				m_vec.y = 0;
