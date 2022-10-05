@@ -13,6 +13,7 @@ Item::Item(const CVector2D& pos) :Base(eType_Item)
 	m_img.SetCenter(32, 128);
 	//“–‚½‚è”»’è—p‹éŒ`
 	m_rect = CRect(-32, -128, 32, 0);
+
 }
 
 void Item::Draw()
@@ -20,7 +21,6 @@ void Item::Draw()
 	m_img.SetPos(GetScreenPos(m_pos));
 	m_img.Draw();
 	DrawRect();
-
 }
 
 void Item::Collision(Base* b)
@@ -31,6 +31,13 @@ void Item::Collision(Base* b)
 			GameData::s_score += 1;
 			SetKill();
 		}
-		break;
+	break;
 	}
+}
+
+void Item::Update()
+{
+	
+
+	
 }

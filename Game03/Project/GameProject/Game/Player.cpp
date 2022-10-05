@@ -117,6 +117,7 @@ void Player::Collision(Base* b)
 			}
 		}
 		break;
+		*/
 	case eType_Enemy_Attack:
 		if (Slash* s = dynamic_cast<Slash*>(b)) {
 			if (m_damage_no != s->GetAttackNo() && Base::CollisionRect(this, s)) {
@@ -131,8 +132,7 @@ void Player::Collision(Base* b)
 				Base::Add(new Effect("Effect_Blood", m_pos + CVector2D(0, -128), m_flip));
 			}
 		}
-	}
-}*/
+
 		if (Map* m = dynamic_cast<Map*>(b)) {
 			int t = m->CollisionMap(CVector2D(m_pos.x, m_pos_old.y), m_rect);
 			if (t != 0)
@@ -147,8 +147,6 @@ void Player::Collision(Base* b)
 		break;
 	}
 }
-
-
 
 void Player::StateIdle()
 {
@@ -179,14 +177,15 @@ void Player::StateIdle()
 		m_vec.y = -jump_pow;
 		m_is_ground = false;
 	}
-	/*
+	
 	//攻撃
 	if (PUSH(CInput::eButton1)) {
+
 		//攻撃状態へ移行
-		m_state = eState_Attack;
-		m_attack_no++;
+		//m_state = eState_Attack;
+		//m_attack_no++;
 	}
-	*/
+	
 
 	
 	//ジャンプ中なら
@@ -211,8 +210,10 @@ void Player::StateIdle()
 	}
 
 }
+
 void Player::StateAttack()
 {
+	
 	//攻撃アニメーションへ変更
 	m_img.ChangeAnimation(eAnimAttack01, false);
 	//3番目のパターンなら
@@ -229,7 +230,7 @@ void Player::StateAttack()
 		//通常状態へ移行
 		m_state = eState_Idle;
 	}
-
+	
 }
 void Player::StateDamage()
 {
