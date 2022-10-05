@@ -16,8 +16,15 @@ void UI::Draw() {
 		m_img.SetPos(200 - 16 * i, 0);
 		m_img.Draw();
 	}
-	
-
+	GameData::s_time--;
+	int t = GameData::s_time / 60;
+	for (int i = 0; i < 4; i++, t /= 10) {
+		int s = t % 10;
+		m_img.SetRect(16 * s, 16, 16 * s + 16, 32);
+		m_img.SetSize(16, 16);
+		m_img.SetPos(200 - 16 * i, 16);
+		m_img.Draw();
+	}
 	//“G‚ª‚¢‚È‚¯‚ê‚Î
 	/*if (enemy == nullptr) {
 		//ƒQ[ƒ€ƒNƒŠƒA‚Ì•\Ž¦
