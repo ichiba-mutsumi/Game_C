@@ -17,6 +17,9 @@ enum {
 	eType_UI,
 	eType_Scene,
 	eType_Item,
+
+	eType_start,
+	eType_Goal2,
 };
 
 class Base {

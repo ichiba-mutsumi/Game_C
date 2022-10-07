@@ -1,10 +1,10 @@
-#include "Item.h"
+#include "start.h"
 #include "GameData.h"
 
-Item::Item(const CVector2D& pos) :Base(eType_Item)
+start::start(const CVector2D& pos) :Base(eType_start)
 {
 	//画像複製
-	m_img = COPY_RESOURCE("Goal", CImage);
+	m_img = COPY_RESOURCE("start", CImage);
 	//座標設定
 	m_pos = pos;
 	//表示サイズ設定
@@ -13,31 +13,25 @@ Item::Item(const CVector2D& pos) :Base(eType_Item)
 	m_img.SetCenter(32, 128);
 	//当たり判定用矩形
 	m_rect = CRect(-32, -128, 32, 0);
-
 }
 
-void Item::Draw()
+void start::Draw()
 {
 	m_img.SetPos(GetScreenPos(m_pos));
 	m_img.Draw();
 	DrawRect();
+
 }
 
-void Item::Collision(Base* b)
+void start::Collision(Base* b)
 {
 	switch (b->m_type) {
 	case eType_Player:
 		if (Base::CollisionRect(this, b)) {
-			GameData::s_score += 1;
+			//GameData::s_score += 1;
 			SetKill();
+			Gstart = true;
 		}
-	break;
+		break;
 	}
-}
-
-void Item::Update()
-{
-	
-
-	
 }
