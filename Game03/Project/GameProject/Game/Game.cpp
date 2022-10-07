@@ -7,7 +7,6 @@
 #include "Item.h"
 #include "../Title/Title.h"
 #include "UI.h"
-
 #include "start.h"
 #include "Goal2.h"
 #include"GameData.h"
@@ -21,7 +20,7 @@ Game::Game() :Base(eType_Scene)
 	//Base::Add(new Enemy(CVector2D(1280 + 256 * 3, 540), true));
 	Base::Add(new Goal(CVector2D(2048, 540)));
 	Base::Add(new Item(CVector2D(2048, 940)));
-	Base::Add(new start(CVector2D(3000, 1035)));
+	Base::Add(new start(CVector2D(3000, 1235)));
 	Base::Add(new Goal2(CVector2D(3500, 1035)));
 	Base::Add(new UI());
 	GameData::s_score = 0;

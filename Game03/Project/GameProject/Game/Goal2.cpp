@@ -1,4 +1,5 @@
 #include "Goal2.h"
+#include "start.h"
 #include "GameData.h"
 
 Goal2::Goal2(const CVector2D& pos) :Base(eType_Goal2)
@@ -29,8 +30,8 @@ void Goal2::Collision(Base* b)
 	case eType_Player:
 		if (Base::CollisionRect(this, b)) {
 			//GameData::s_score += 1;
+			Base::Add(new start(CVector2D(3000, 1235)));
 			SetKill();
-			Ggoal2 = true;
 
 		}
 		break;
