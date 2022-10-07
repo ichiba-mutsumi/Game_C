@@ -6,8 +6,9 @@ public:
 	CImage m_img;
 	bool m_flip;
 	bool m_down;
+	int hp;
 public:
-	Enemy(const CVector2D& p, bool flip);
+	Enemy(const CVector2D& p, bool flip ,int type);
 	void Update();
 	void Draw();
 	void Collision(Base* b);
