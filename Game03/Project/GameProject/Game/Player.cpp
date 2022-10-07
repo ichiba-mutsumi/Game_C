@@ -181,7 +181,7 @@ void Player::StateIdle()
 	
 	//攻撃
 	if (PUSH(CInput::eButton1)) {
-		Base::Add(new Attack(eType_Player_Attack, m_pos, m_ang, 4));
+		
 		//攻撃状態へ移行
 		//m_state = eState_Attack;
 		//m_attack_no++;
@@ -220,10 +220,7 @@ void Player::StateAttack()
 	//3番目のパターンなら
 	if (m_img.GetIndex() == 3) {
 		if (m_flip) {
-			Base::Add(new Slash(m_pos + CVector2D(-64, 64), m_flip, eType_Player_Attack, m_attack_no));
-		}else{
-			Base::Add(new Slash(m_pos + CVector2D(64, -64), m_flip, eType_Player_Attack, m_attack_no));
-
+			//Base::Add(new Attack(eType_Player_Attack, m_pos, m_ang, 4));
 		}
 	}
 	//アニメーションが終了したら

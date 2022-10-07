@@ -1,36 +1,104 @@
 #include "Attack.h"
 #include "Map.h"
-
-Attack::Attack(int type, const CVector2D& pos, float ang, float speed):Base(type)
+#include "Player.h"
+#include"GameData.h"
+void Attack::StateIdle()
 {
-	m_img = COPY_RESOURCE("ball", CImage);
-	m_pos = pos;
-	m_img.SetCenter(16, 16);
-	m_ang = ang;
-	m_speed = speed;
+	Base* b = Base::FindObject(eType_Player);
+	if (b) {
+		m_pos = b->m_pos + CVector2D(-60, -60);
+	}
+	if (PUSH(CInput::eButton1)) {
+
+		//攻撃状態へ移行
+		m_state = eState_Attack;
+		m_attack_no++;
+	}
 }
 
+void Attack::StateAttack()
+{
+	//Base* b = Base::FindObject(eType_Player);
+	m_pos_old = m_pos;
+	float l = GameData::s_score;
+	if (m_flip) {
+		CVector2D vec = CVector2D(10, 0);
+		m_pos -= vec;
+		if (m_pos_old.x - 10 <= m_pos.x) {
+			//m_pos = m_pos_old;
+			
+		}
+		else {
+			CVector2D vec = CVector2D(10, 0);
+			m_pos += vec;
+			if (m_pos_old.x - 10 <= m_pos.x) {
+				//m_pos = m_pos_old;
+				
+			}
+		}
+		m_state = eState_Idle;
+		/*
+		m_pos_old = m_pos;
+		float Espeed = 5;
+		m_ang -= DtoR(2.0f);
+		if (m_flip) {
+			CVector2D vec = CVector2D(sin(m_ang), cos(m_ang)) * Espeed;
+			m_pos += vec;
+
+		}
+		else {
+			CVector2D vec = CVector2D(sin(-m_ang), cos(-m_ang)) * Espeed;
+			m_pos += vec;
+		}*/
+	}
+}
+Attack::Attack(const CVector2D& p, bool flip)
+	:Base(eType_Ball)
+{
+	//画像複製
+	m_img = COPY_RESOURCE("ball", CImage);
+	m_img.SetSize(64, 64);
+	//再生アニメーション設定
+	//m_img.ChangeAnimation(0);
+	//座標設定
+	m_pos_old = m_pos = p;
+	//中心位置設定
+	m_img.SetCenter(34, 32);
+	//反転フラグ
+	m_flip = flip;
+	m_rect = CRect(-16, -16, 16, 16);
+	//通常状態へ
+	m_state = eState_Idle;
+	//攻撃番号
+	m_attack_no = rand();
+	//ダメージ番号
+	m_attack_no = -1;
+}
 void Attack::Update()
 {
-	m_vec = CVector2D(sin(m_ang), cos(m_ang)) * m_speed;
-	m_pos += m_vec;
-}
-
-void Attack::Draw()
-{
-	m_img.SetPos(m_pos);
-	m_img.SetAng(m_ang);
-	m_img.Draw();
-}
-
-void Attack::Collision(Base* b)
-{
-	switch (b->m_type) {
-	case eType_Enemy:
-		if (m_type == eType_Player && Base::CollisionCircle(this, b)) {
-			//SetKill();
-			b->SetKill();
-		}
+	m_pos_old = m_pos;
+	//m_scroll.x = m_pos.x - 1280 / 6;
+	//m_scroll.y = m_pos.y - 600;
+	switch (m_state) {
+	case eState_Idle:
+		StateIdle();
+		break;
+	case eState_Attack:
+		StateAttack();
 		break;
 	}
+	
+}
+void Attack::Draw()
+{
+	//位置設定
+	m_img.SetPos(GetScreenPos(m_pos));
+	//反転設定
+	m_img.SetFlipH(m_flip);
+	//描画
+	m_img.Draw();
+	DrawRect();
+}
+void Attack::Collision(Base* b)
+{
 }
