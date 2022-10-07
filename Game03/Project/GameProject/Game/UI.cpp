@@ -1,5 +1,6 @@
 #include "UI.h"
 #include "GameData.h"
+#include "start.h"
 
 
 UI::UI() :Base(eType_UI) {
@@ -16,7 +17,11 @@ void UI::Draw() {
 		m_img.SetPos(200 - 16 * i, 0);
 		m_img.Draw();
 	}
-	GameData::s_time--;
+	Base* b = Base::FindObject(eType_start);
+	if (!b) {
+		GameData::s_time--;
+	}
+	
 	int t = GameData::s_time / 60;
 	for (int i = 0; i < 4; i++, t /= 10) {
 		int s = t % 10;
