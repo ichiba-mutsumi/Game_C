@@ -71,6 +71,8 @@ void Init(void)
 	//âÊëúÇÃì«Ç›çûÇ›Ç∆ìoò^
 	ADD_RESOURCE("Player", CImage::CreateImage("Image/Player.png", player_anim_data,64, 64));
 	ADD_RESOURCE("Enemy", CImage::CreateImage("Image/Enemy.png", enemy_anim_data, 48, 48));
+	ADD_RESOURCE("Enemy2", CImage::CreateImage("Image/Enemy2.png", enemy_anim_data, 48, 48));
+	ADD_RESOURCE("Enemy3", CImage::CreateImage("Image/Enemy3.png", enemy_anim_data, 48, 48));
 	ADD_RESOURCE("Sky", CImage::CreateImage("Image/Sky.png"));
 	ADD_RESOURCE("Town", CImage::CreateImage("Image/Town.png"));
 	ADD_RESOURCE("ForeGround", CImage::CreateImage("Image/ForeGround.png"));

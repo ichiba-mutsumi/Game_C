@@ -15,13 +15,13 @@ Game::Game() :Base(eType_Scene)
 	//Base::Add(new Field());
 	Base::Add(new Map());
 	Base::Add(new Player(CVector2D(1280, 540), false));
-	Base::Add(new Enemy(CVector2D(2500, 900), false));
-	//Base::Add(new Enemy(CVector2D(1280 + 256 * 2, 540), true));
-	//Base::Add(new Enemy(CVector2D(1280 + 256 * 3, 540), true));
+	Base::Add(new Enemy(CVector2D(2500, 900), false,eType_Enemy));
+	Base::Add(new Enemy(CVector2D(1280 + 256 * 2, 540), true,eType_Enemy2));
+	Base::Add(new Enemy(CVector2D(1280 + 256 * 3, 540), true,eType_Enemy3));
 	Base::Add(new Goal(CVector2D(2048, 540)));
 	Base::Add(new Item(CVector2D(2048, 940)));
-	Base::Add(new start(CVector2D(3000, 1235)));
-	Base::Add(new Goal2(CVector2D(3500, 1035)));
+	Base::Add(new start(CVector2D(2000, 1235)));
+	Base::Add(new Goal2(CVector2D(2500, 1035)));
 	Base::Add(new UI());
 	GameData::s_score = 0;
 	GameData::s_time = 60 * 60 * 10;
