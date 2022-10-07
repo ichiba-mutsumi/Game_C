@@ -43,10 +43,16 @@
     <ClCompile Include="Game\UI.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Attack.cpp">
+    <ClCompile Include="Game\Goal2.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\start.cpp">
       <Filter>Game</Filter>
     </ClCompile>
     <ClCompile Include="Game\Enemy.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Attack.cpp">
       <Filter>Game</Filter>
     </ClCompile>
   </ItemGroup>
@@ -90,10 +96,16 @@
     <ClInclude Include="Game\UI.h">
       <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="Game\Attack.h">
+    <ClInclude Include="Game\Goal2.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\start.h">
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="Game\Enemy.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Attack.h">
       <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>

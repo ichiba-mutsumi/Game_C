@@ -20,7 +20,7 @@ int m_state;
 CImage m_img;
 //反転フラグ
 bool m_flip;
-
+int cnt;
 //攻撃番号
 int m_attack_no;
 //ダメージ番号

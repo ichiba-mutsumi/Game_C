@@ -18,38 +18,24 @@ void Attack::StateIdle()
 
 void Attack::StateAttack()
 {
+	cnt = 30;
+	cnt--;
 	//Base* b = Base::FindObject(eType_Player);
 	m_pos_old = m_pos;
 	float l = GameData::s_score;
 	if (m_flip) {
 		CVector2D vec = CVector2D(10, 0);
-		m_pos -= vec;
-		if (m_pos_old.x - 10 <= m_pos.x) {
-			//m_pos = m_pos_old;
-			
-		}
-		else {
-			CVector2D vec = CVector2D(10, 0);
-			m_pos += vec;
-			if (m_pos_old.x - 10 <= m_pos.x) {
-				//m_pos = m_pos_old;
-				
-			}
-		}
+		m_pos += vec;
+		//m_pos = m_pos_old;
+	}
+	else {
+		CVector2D vec = CVector2D(-10, 0);
+		m_pos += vec;
+		//m_pos = m_pos_old;
+	}
+	if (cnt <= 0) {
+		cnt = 0;
 		m_state = eState_Idle;
-		/*
-		m_pos_old = m_pos;
-		float Espeed = 5;
-		m_ang -= DtoR(2.0f);
-		if (m_flip) {
-			CVector2D vec = CVector2D(sin(m_ang), cos(m_ang)) * Espeed;
-			m_pos += vec;
-
-		}
-		else {
-			CVector2D vec = CVector2D(sin(-m_ang), cos(-m_ang)) * Espeed;
-			m_pos += vec;
-		}*/
 	}
 }
 Attack::Attack(const CVector2D& p, bool flip)
@@ -69,6 +55,7 @@ Attack::Attack(const CVector2D& p, bool flip)
 	m_rect = CRect(-16, -16, 16, 16);
 	//’Êíó‘Ô‚Ö
 	m_state = eState_Idle;
+	cnt = 0;
 	//UŒ‚”Ô†
 	m_attack_no = rand();
 	//ƒ_ƒ[ƒW”Ô†

@@ -8,6 +8,8 @@ enum {
 	eType_Player,
 	eType_Enemy,
 	eType_Ball,
+	eType_Enemy2,
+	eType_Enemy3,
 	eType_Bullet,
 	eType_Goal,
 	eType_Player_Attack,
@@ -16,6 +18,9 @@ enum {
 	eType_UI,
 	eType_Scene,
 	eType_Item,
+
+	eType_start,
+	eType_Goal2,
 };
 
 class Base {

@@ -181,7 +181,7 @@ void Player::StateIdle()
 	
 	//UŒ‚
 	if (PUSH(CInput::eButton1)) {
-		
+		Base::Add(new Attack(CVector2D(1280, 560), false));
 		//UŒ‚ó‘Ô‚ÖˆÚs
 		//m_state = eState_Attack;
 		//m_attack_no++;
