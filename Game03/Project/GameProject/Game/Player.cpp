@@ -181,7 +181,7 @@ void Player::StateIdle()
 		if (!b && m_flip) {
 			Base::Add(new Attack(CVector2D(1280, 560), false, eType_Ball));
 		}
-		else if(!b && !m_flip) {
+		else if (!b && !m_flip) {
 			Base::Add(new Attack(CVector2D(1280, 560), true, eType_Ball));
 		}
 		//攻撃状態へ移行
@@ -216,7 +216,7 @@ void Player::StateIdle()
 
 void Player::StateAttack()
 {
-	
+	/*
 	//攻撃アニメーションへ変更
 	m_img.ChangeAnimation(eAnimAttack01, false);
 	//3番目のパターンなら
@@ -224,13 +224,16 @@ void Player::StateAttack()
 		if (m_flip) {
 			
 		}
+		else {
+
+		}
 	}
 	//アニメーションが終了したら
 	if (m_img.CheckAnimationEnd()) {
 		//通常状態へ移行
 		m_state = eState_Idle;
 	}
-	
+	*/
 }
 void Player::StateDamage()
 {

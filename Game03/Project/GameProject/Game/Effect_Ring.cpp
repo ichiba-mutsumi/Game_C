@@ -19,7 +19,6 @@ Effect_Ring::Effect_Ring(const char* name, const CVector2D& pos, bool flip) :
 	m_flip = flip;
 }
 
-
 void Effect_Ring::Update()
 {
 	//アニメーション更新

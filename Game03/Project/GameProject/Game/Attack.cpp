@@ -40,11 +40,10 @@ void Attack::StateAttack()
 	m_img.SetSize(128, 32);
 	m_img.SetCenter(64, 16);
 	m_rect = CRect(-16, -16, 16, 16);
-	
 	cnt--;
 	if (m_flip) {
 		CVector2D vec = CVector2D(10, 0);
-		//Base::Add(new Effect_Ring("Effect_Ring", m_pos + CVector2D(+60, 0), true));
+		//Base::Add(new Effect_Ring("Effect_Ring", CVector2D(500, 500), true));
 		m_pos += vec;
 	}
 	else {
