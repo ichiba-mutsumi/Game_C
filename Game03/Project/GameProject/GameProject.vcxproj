@@ -15,6 +15,7 @@
     <ClCompile Include="Game\AnimData.cpp" />
     <ClCompile Include="Game\Attack.cpp" />
     <ClCompile Include="Game\Effect.cpp" />
+    <ClCompile Include="Game\Effect_Ring.cpp" />
     <ClCompile Include="Game\Enemy.cpp" />
     <ClCompile Include="Game\Field.cpp" />
     <ClCompile Include="Game\Game.cpp" />
@@ -35,6 +36,7 @@
     <ClInclude Include="Game\AnimData.h" />
     <ClInclude Include="Game\Attack.h" />
     <ClInclude Include="Game\Effect.h" />
+    <ClInclude Include="Game\Effect_Ring.h" />
     <ClInclude Include="Game\Enemy.h" />
     <ClInclude Include="Game\Field.h" />
     <ClInclude Include="Game\Game.h" />

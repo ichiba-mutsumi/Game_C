@@ -272,16 +272,13 @@ static TexAnim enemyAttack03End[] = {
 	{ 0,0 },
 };
 static TexAnim enemyDamage[] = {
-	{ 88,2 },
-	{ 89,2 },
-	{ 90,2 },
-	{ 91,2 },
+	{ 5,2 },
+	
+
 };
 static TexAnim enemyDamageEnd[] = {
-	{ 92,2 },
-	{ 93,2 },
-	{ 94,2 },
-	{ 95,2 },
+	{ 5,2 },
+	
 };
 static TexAnim enemyDeath[] = {
 	{ 96,4 },
@@ -390,7 +387,7 @@ static TexAnim _effect_bomb[] = {
 	{ 2,2 },
 	{ 3,2 },
 	{ 4,2 },
-};
+}; 
 TexAnimData effect_bomb_anim_data[] = {
 	ANIMDATA(_effect_smoke),
 };
@@ -403,4 +400,54 @@ static TexAnim _effect_slash[] = {
 };
 TexAnimData effect_slash_anim_data[] = {
 	ANIMDATA(_effect_slash),
+};
+static TexAnim _effect_flame[] = {
+	{ 0,4 },
+	{ 1,4 },
+	{ 2,4 },
+	{ 3,4 },
+	{ 4,4 },
+	{ 5,4 },
+	{ 6,4 },
+	{ 7,4 },
+	{ 8,4 },
+	{ 9,4 },
+};
+TexAnimData effect_flame_anim_data[] = {
+	ANIMDATA(_effect_flame),
+};
+static TexAnim _effect_ring[] = {
+	{ 0,1 },
+	{ 1,1 },
+	{ 2,1 },
+	{ 3,1 },
+	{ 4,1 },
+	{ 5,1 },
+	{ 6,1 },
+	{ 7,1 },
+	{ 8,1 },
+	{ 9,1 },
+	{ 10,1 },
+	{ 11,1 },
+	{ 12,1 },
+	{ 13,1 },
+	{ 14,1 },
+	{ 15,1 },
+	{ 16,1 },
+	{ 17,1 },
+	{ 18,1 },
+	{ 19,1 },
+	{ 20,1 },
+	{ 21,1 },
+	{ 22,1 },
+	{ 23,1 },
+	{ 24,1 },
+	{ 25,1 },
+	{ 26,1 },
+	{ 27,1 },
+	{ 28,1 },
+	{ 29,1 },
+};
+TexAnimData effect_ring_anim_data[] = {
+	ANIMDATA(_effect_ring),
 };

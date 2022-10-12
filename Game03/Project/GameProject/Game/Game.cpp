@@ -10,11 +10,15 @@
 #include "start.h"
 #include "Goal2.h"
 #include"GameData.h"
+#include"Attack.h"
 Game::Game() :Base(eType_Scene)
 {
 	//Base::Add(new Field());
 	Base::Add(new Map());
 	Base::Add(new Player(CVector2D(1280, 540), false));
+	//Base::Add(new Attack(CVector2D(1280, 560), false));
+	//Base::Add(new Enemy(CVector2D(1280 + 256 * 2, 540), true));
+	//Base::Add(new Enemy(CVector2D(1280 + 256 * 3, 540), true));
 	Base::Add(new Enemy(CVector2D(2500, 900), false,eType_Enemy));
 	Base::Add(new Enemy(CVector2D(1280 + 256 * 2, 540), true,eType_Enemy2));
 	Base::Add(new Enemy(CVector2D(1280 + 256 * 3, 540), true,eType_Enemy3));

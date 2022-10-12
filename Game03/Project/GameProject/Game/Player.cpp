@@ -32,7 +32,7 @@ Player::Player(const CVector2D& p, bool flip) :
 	//攻撃番号
 	m_attack_no = rand();
 	//ダメージ番号
-	m_attack_no = -1;
+	m_damage_no = -1;
 	//ヒットポイント
 	m_hp = 100;
 }
@@ -77,10 +77,6 @@ void Player::Update() {
 	//重力による落下
 	m_vec.y += GRAVITY;
 	m_pos += m_vec;
-
-	
-
-
 }
 
 void Player::Draw() {
@@ -180,8 +176,14 @@ void Player::StateIdle()
 	}
 	
 	//攻撃
-	if (PUSH(CInput::eButton1)) {
-		Base::Add(new Attack(eType_Player_Attack, m_pos, m_ang, 4));
+	if (HOLD(CInput::eButton1)) {
+		Base* b = Base::FindObject(eType_Ball);
+		if (!b && m_flip) {
+			Base::Add(new Attack(CVector2D(1280, 560), false, eType_Ball,m_attack_no));
+		}
+		else if(!b && !m_flip) {
+			Base::Add(new Attack(CVector2D(1280, 560), true, eType_Ball,m_attack_no));
+		}
 		//攻撃状態へ移行
 		//m_state = eState_Attack;
 		//m_attack_no++;
@@ -220,10 +222,7 @@ void Player::StateAttack()
 	//3番目のパターンなら
 	if (m_img.GetIndex() == 3) {
 		if (m_flip) {
-			Base::Add(new Slash(m_pos + CVector2D(-64, 64), m_flip, eType_Player_Attack, m_attack_no));
-		}else{
-			Base::Add(new Slash(m_pos + CVector2D(64, -64), m_flip, eType_Player_Attack, m_attack_no));
-
+			
 		}
 	}
 	//アニメーションが終了したら
