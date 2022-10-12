@@ -20,6 +20,7 @@ int m_state;
 CImage m_img;
 //”½“]ƒtƒ‰ƒO
 bool m_flip;
+//’eÁ–ÅŠÔ
 int cnt;
 //UŒ‚”Ô†
 int m_attack_no;
@@ -31,7 +32,7 @@ void StateAttack();
 
 
 public:
-	Attack(const CVector2D& p, bool flip);
+	Attack(const CVector2D& p, bool flip,int type);
 	void Update();
 	void Draw();
 	void Collision(Base* b);

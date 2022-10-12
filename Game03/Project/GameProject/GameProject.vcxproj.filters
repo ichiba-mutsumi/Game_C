@@ -55,6 +55,9 @@
     <ClCompile Include="Game\Attack.cpp">
       <Filter>Game</Filter>
     </ClCompile>
+    <ClCompile Include="Game\Effect_Ring.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Base\Base.h">
@@ -106,6 +109,9 @@
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="Game\Attack.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Effect_Ring.h">
       <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>

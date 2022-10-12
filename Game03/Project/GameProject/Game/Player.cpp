@@ -77,10 +77,6 @@ void Player::Update() {
 	//重力による落下
 	m_vec.y += GRAVITY;
 	m_pos += m_vec;
-
-	
-
-
 }
 
 void Player::Draw() {
@@ -180,8 +176,14 @@ void Player::StateIdle()
 	}
 	
 	//攻撃
-	if (PUSH(CInput::eButton1)) {
-		Base::Add(new Attack(CVector2D(1280, 560), false));
+	if (HOLD(CInput::eButton1)) {
+		Base* b = Base::FindObject(eType_Ball);
+		if (!b && m_flip) {
+			Base::Add(new Attack(CVector2D(1280, 560), false, eType_Ball));
+		}
+		else if(!b && !m_flip) {
+			Base::Add(new Attack(CVector2D(1280, 560), true, eType_Ball));
+		}
 		//攻撃状態へ移行
 		//m_state = eState_Attack;
 		//m_attack_no++;
@@ -220,7 +222,7 @@ void Player::StateAttack()
 	//3番目のパターンなら
 	if (m_img.GetIndex() == 3) {
 		if (m_flip) {
-			//Base::Add(new Attack(eType_Player_Attack, m_pos, m_ang, 4));
+			
 		}
 	}
 	//アニメーションが終了したら

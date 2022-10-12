@@ -38,4 +38,6 @@ extern TexAnimData enemy_anim_data[];
 extern TexAnimData effect_blood_anim_data[];
 extern TexAnimData effect_smoke_anim_data[];
 extern TexAnimData effect_slash_anim_data[];
-extern TexAnimData effect_bomb_anim_data[];
+extern TexAnimData effect_bomb_anim_data[]; 
+extern TexAnimData effect_flame_anim_data[];
+extern TexAnimData effect_ring_anim_data[];
