@@ -26,10 +26,10 @@ void Attack::StateIdle()
 	Base* b = Base::FindObject(eType_Player);
 	if (b) {
 		if (m_flip) {
-			m_pos = b->m_pos + CVector2D(+60, -60);
+			m_pos = b->m_pos + CVector2D(+60, -75);
 		}
 		else {
-			m_pos = b->m_pos + CVector2D(-60, -60);
+			m_pos = b->m_pos + CVector2D(-60, -75);
 		}
 	}
 }
@@ -39,11 +39,12 @@ void Attack::StateAttack()
 	m_img.UpdateAnimation();
 	m_img.SetSize(128, 32);
 	m_img.SetCenter(64, 16);
-	m_rect = CRect(-16, -16, 16, 16);
+
+	m_rect = CRect(-16, -16*2, 16, 16*2);	
 	cnt--;
 	if (m_flip) {
 		CVector2D vec = CVector2D(10, 0);
-		//Base::Add(new Effect_Ring("Effect_Ring", CVector2D(500, 500), true));
+		//Base::Add(new Effect_Ring("Effect_Ring", m_pos + CVector2D(+60, 0), true));
 		m_pos += vec;
 	}
 	else {
@@ -55,7 +56,8 @@ void Attack::StateAttack()
 		SetKill();
 	}
 }
-Attack::Attack(const CVector2D& p, bool flip,int type)
+
+Attack::Attack(const CVector2D& p, bool flip,int type,int attack_no)
 	:Base(eType_Ball)
 {
 	//âÊëúï°êª
@@ -78,6 +80,7 @@ Attack::Attack(const CVector2D& p, bool flip,int type)
 	m_attack_no = rand();
 	//É_ÉÅÅ[ÉWî‘çÜ
 	m_attack_no = -1;
+	m_attack_no = attack_no;
 }
 void Attack::Update()
 {

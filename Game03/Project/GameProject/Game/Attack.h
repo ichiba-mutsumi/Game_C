@@ -32,9 +32,12 @@ void StateAttack();
 
 
 public:
-	Attack(const CVector2D& p, bool flip,int type);
+	Attack(const CVector2D& p, bool flip,int type,int attack_no);
 	void Update();
 	void Draw();
 	void Collision(Base* b);
+	int GetAttackNo() {
+		return m_attack_no;
+	}
 	
 };

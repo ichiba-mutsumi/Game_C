@@ -32,7 +32,7 @@ Player::Player(const CVector2D& p, bool flip) :
 	//攻撃番号
 	m_attack_no = rand();
 	//ダメージ番号
-	m_attack_no = -1;
+m_damage_no = -1;
 	//ヒットポイント
 	m_hp = 100;
 }
@@ -179,10 +179,12 @@ void Player::StateIdle()
 	if (HOLD(CInput::eButton1)) {
 		Base* b = Base::FindObject(eType_Ball);
 		if (!b && m_flip) {
-			Base::Add(new Attack(CVector2D(1280, 560), false, eType_Ball));
+		Base::Add(new Attack(CVector2D(1280, 560), false, eType_Ball,m_attack_no));
 		}
+
 		else if (!b && !m_flip) {
-			Base::Add(new Attack(CVector2D(1280, 560), true, eType_Ball));
+
+			Base::Add(new Attack(CVector2D(1280, 560), true, eType_Ball,m_attack_no));
 		}
 		//攻撃状態へ移行
 		//m_state = eState_Attack;
