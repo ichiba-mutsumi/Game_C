@@ -7,6 +7,8 @@ private:
 		eState_Idle,
 		eState_Down,
 		eState_Damage,
+		eState_Attack,
+
 
 	};
 	int m_state;
@@ -18,9 +20,12 @@ private:
 	int m_damage_no;
 	int hp;
 	int cnt;
+	//Šeó‘Ô‚Å‚Ì‹““®
 	void StateIdle();
 	void StateDamage();
 	void StateDown();
+	void StateAttack();
+	
 public:
 	Enemy(const CVector2D& p, bool flip ,int type);
 	void Update();
