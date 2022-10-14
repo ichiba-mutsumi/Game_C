@@ -73,6 +73,7 @@ void Init(void)
 	ADD_RESOURCE("Enemy", CImage::CreateImage("Image/Enemy.png", enemy_anim_data, 48, 48));
 	ADD_RESOURCE("Enemy2", CImage::CreateImage("Image/Enemy2.png", enemy_anim_data, 48, 48));
 	ADD_RESOURCE("Enemy3", CImage::CreateImage("Image/Enemy3.png", enemy_anim_data, 48, 48));
+	ADD_RESOURCE("Witch", CImage::CreateImage("Image/Witch.png", enemy_witch_anim_data, 131,132));
 	ADD_RESOURCE("Sky", CImage::CreateImage("Image/Sky.png"));
 	ADD_RESOURCE("Town", CImage::CreateImage("Image/Town.png"));
 	ADD_RESOURCE("ForeGround", CImage::CreateImage("Image/ForeGround.png"));
