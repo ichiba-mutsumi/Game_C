@@ -91,7 +91,7 @@ void Player::Update() {
 		//sc_ver.y += scroll_speed_add;
 	}
 	
-	if (m_vec.y > GRAVITY * 4 || (PUSH(CInput::eDown))) {
+	if (m_vec.y > GRAVITY * 4) {
 		v3.y = 300;
 	}
 	else {
