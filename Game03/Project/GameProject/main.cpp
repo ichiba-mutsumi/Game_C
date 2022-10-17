@@ -87,6 +87,7 @@ void Init(void)
 	ADD_RESOURCE("start", CImage::CreateImage("Image/start.png"));
 	ADD_RESOURCE("Goal2", CImage::CreateImage("Image/Goal2.png"));
 	ADD_RESOURCE("ball", CImage::CreateImage("Image/ball.png"));
+	ADD_RESOURCE("coin", CImage::CreateImage("Image/coin.png", effect_coin_anim_data, 640, 1080));
 //ADD_RESOURCE("Item", CImage::CreateImage("Image/Item.png"));
 	/*//ÉvÉåÉCÉÑÅ[ÇÃê∂ê¨
 	Base::Add(new Player(CVector2D(200, 500), false));

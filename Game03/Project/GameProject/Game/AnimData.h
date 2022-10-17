@@ -41,3 +41,4 @@ extern TexAnimData effect_slash_anim_data[];
 extern TexAnimData effect_bomb_anim_data[]; 
 extern TexAnimData effect_flame_anim_data[];
 extern TexAnimData effect_ring_anim_data[];
+extern TexAnimData effect_coin_anim_data[];
