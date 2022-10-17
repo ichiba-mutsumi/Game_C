@@ -15,19 +15,16 @@ Player::Player(const CVector2D& p, bool flip) :
 	//画像複製
 	m_img = COPY_RESOURCE("Player", CImage);
 	m_img.SetSize(224, 224);
-	
 	//再生アニメーション設定
 	m_img.ChangeAnimation(0);
 	//座標設定
 	m_pos_old = m_pos = p;
 	//中心位置設定
 	m_img.SetCenter(112, 192);
-	
 	//反転フラグ
 	m_flip = flip;
 	//当たり判定
 	m_rect = CRect(-28, -124, 28, 0);
-	
 	//通常状態へ
 	m_state = eState_Idle;
 	//着地フラグ
@@ -226,17 +223,18 @@ void Player::StateIdle()
 	//攻撃
 	if (HOLD(CInput::eButton1)) {
 		Base* b = Base::FindObject(eType_Ball);
-		if (!b && m_flip) {
-		Base::Add(new Attack(CVector2D(1280, 560), false, eType_Ball,m_attack_no));
+		if (!b ) {
+		Base::Add(new Attack(CVector2D(1280, 560), m_flip, eType_Ball,m_attack_no));
+		m_img.ChangeAnimation(eAnimAtkIdle);
 		}
-
+		/*
 		else if (!b && !m_flip) {
 
 			Base::Add(new Attack(CVector2D(1280, 560), true, eType_Ball,m_attack_no));
 		}
 		//攻撃状態へ移行
 		//m_state = eState_Attack;
-		//m_attack_no++;
+		//m_attack_no++;*/
 	}
 	
 	//ジャンプ中なら
@@ -271,6 +269,8 @@ void Player::StateIdle()
 
 void Player::StateAttack()
 {
+	//m_img.ChangeAnimation()
+
 	/*
 	//攻撃アニメーションへ変更
 	m_img.ChangeAnimation(eAnimAttack01, false);

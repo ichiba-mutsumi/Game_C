@@ -4,9 +4,13 @@
 //!アニメーションの種類
 enum  {
 	eAnimIdle = 0,
+	eAnimAtkIdle,
 	eAnimRun,
+	eAnimAtkRun,
 	eAnimJumpUp,
+	eAnimAtkJumpUp,
 	eAnimJumpDown,
+	eAnimAtkJumpDown,
 	eAnimAttack01,
 	eAnimAttack01End,
 	eAnimAttack02,

@@ -44,12 +44,12 @@ void Attack::StateAttack()
 	cnt--;
 	if (m_flip) {
 		CVector2D vec = CVector2D(10, 0);
-		//Base::Add(new Effect_Ring("Effect_Kira", m_pos + CVector2D(+60, 0), true));
+		//Base::Add(new Effect_Ring("Effect_Ring", m_pos + CVector2D(+60, 0), true));
 		m_pos += vec;
 	}
 	else {
 		CVector2D vec = CVector2D(10, 0);
-		//Base::Add(new Effect_Ring("Effect_Kira", m_pos + CVector2D(-60, 0), false));
+		//Base::Add(new Effect_Ring("Effect_Ring", m_pos + CVector2D(-60, 0), false));
 		m_pos -= vec;
 	}
 	if (cnt <= 0) {

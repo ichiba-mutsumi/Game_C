@@ -42,6 +42,9 @@ public:
 	void Update();
 	void Draw();
 	void Collision(Base* b);
+	int GetFlip() {
+
+	}
 };
 
 
