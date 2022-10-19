@@ -4,6 +4,7 @@
 #include "Slash.h"
 #include "Effect.h"
 #include "Game.h"
+#include "Enemy.h"
 #include "Map.h"
 #include "Item.h"
 #include "../Base/Base.h"
@@ -38,7 +39,7 @@ Player::Player(const CVector2D& p, bool flip) :
 	//溜め時間
 	Ccnt = 120;
 	//ヒットポイント
-	m_hp = 100;
+	m_hp = 500;
 	//プレイヤー移動量
 	CVector2D ver(0, 0);
 	//カメラ移動量
@@ -51,8 +52,6 @@ Player::Player(const CVector2D& p, bool flip) :
 	m_img.SetCenter(112 / 2, 192 / 2);
 	m_rect = CRect(-28 / 2, -124 / 2, 28 / 2, 0);*/
 }
-
-
 
 void Player::Update() {
 
@@ -168,6 +167,21 @@ void Player::Collision(Base* b)
 		*/
 	case eType_Enemy_Attack:
 		if (Slash* s = dynamic_cast<Slash*>(b)) {
+			if (m_damage_no != s->GetAttackNo() && Base::CollisionRect(this, s)) {
+				m_damage_no = s->GetAttackNo();
+				m_hp -= 50;
+				if (m_hp <= 0) {
+					m_state = eState_Down;
+				}
+				else {
+					m_state = eState_Damage;
+				}
+				Base::Add(new Effect("Effect_Blood", m_pos + CVector2D(0, -128), m_flip));
+			}
+		}
+		break;
+	case eType_Enemy:
+		if (Enemy* s = dynamic_cast<Enemy*>(b)) {
 			if (m_damage_no != s->GetAttackNo() && Base::CollisionRect(this, s)) {
 				m_damage_no = s->GetAttackNo();
 				m_hp -= 50;
