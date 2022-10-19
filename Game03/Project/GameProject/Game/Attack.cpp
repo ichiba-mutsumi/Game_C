@@ -90,7 +90,7 @@ Attack::Attack(const CVector2D& p, bool flip,int type,int attack_no)
 	//攻撃番号
 	m_attack_no = rand();
 	//ダメージ番号
-	m_attack_no = -1;
+	m_damage_no = -1;
 	m_attack_no = attack_no;
 	//Player反転フラグ取得
 	Base* b = Base::FindObject(eType_Player);
