@@ -73,6 +73,7 @@ void Init(void)
 	ADD_RESOURCE("Enemy", CImage::CreateImage("Image/Enemy.png", enemy_anim_data, 48, 48));
 	ADD_RESOURCE("Enemy2", CImage::CreateImage("Image/Enemy2.png", enemy_anim_data, 48, 48));
 	ADD_RESOURCE("Enemy3", CImage::CreateImage("Image/Enemy3.png", enemy_anim_data, 48, 48));
+	ADD_RESOURCE("Witch", CImage::CreateImage("Image/Witch.png", enemy_witch_anim_data, 131,132));
 	ADD_RESOURCE("Sky", CImage::CreateImage("Image/Sky.png"));
 	ADD_RESOURCE("Town", CImage::CreateImage("Image/Town.png"));
 	ADD_RESOURCE("ForeGround", CImage::CreateImage("Image/ForeGround.png"));
@@ -82,6 +83,7 @@ void Init(void)
 	ADD_RESOURCE("Effect_Blood", CImage::CreateImage("Image/Effect_Blood.png", effect_blood_anim_data, 128, 128));
 	ADD_RESOURCE("Effect_Flame", CImage::CreateImage("Image/Effect_Flame.png", effect_flame_anim_data, 1080, 320));
 	ADD_RESOURCE("Effect_Ring", CImage::CreateImage("Image/Effect_Ring.png", effect_ring_anim_data, 160, 720));
+	//ADD_RESOURCE("Effect_Kira", CImage::CreateImage("Image/Effect_kirakira.png", effect_ring_anim_data, 360, 360));
 	ADD_RESOURCE("Goal", CImage::CreateImage("Image/Goal.png"));
 	ADD_RESOURCE("Title", CImage::CreateImage("Image/Title.png"));
 	ADD_RESOURCE("start", CImage::CreateImage("Image/start.png"));

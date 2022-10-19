@@ -10,6 +10,14 @@ void Enemy::StateIdle()
 {
     
     m_pos.x--;
+
+    const float move_speed = 4;
+
+    bool move_flag = false;
+
+    m_img.ChangeAnimation(0);
+
+
 }
 
 void Enemy::StateDamage()
@@ -17,7 +25,7 @@ void Enemy::StateDamage()
     
     cnt--;
     
-    m_img.ChangeAnimation(eAnimDamage, false);
+    m_img.ChangeAnimation(0, false);
     if (cnt<=0) {
         m_img.ChangeAnimation(eAnimIdle);
         m_state = eState_Idle;
@@ -26,11 +34,25 @@ void Enemy::StateDamage()
 
 void Enemy::StateDown()
 {
-    m_img.ChangeAnimation(eAnimDown);
+    m_img.ChangeAnimation(0);
     SetKill();
     Base::Add(new Effect("Effect_Smoke", m_pos + CVector2D(0, -128), m_flip));
 
 }
+
+void Enemy::StateAttack()
+{
+    
+    m_img.ChangeAnimation(2, false);
+
+
+    if (m_img.CheckAnimationEnd()) {
+
+        m_state = eState_Idle;
+    }
+}
+
+
 
 Enemy::Enemy(const CVector2D& p, bool flip, int type):
 Base(eType_Enemy) {
@@ -49,6 +71,10 @@ Base(eType_Enemy) {
     case eType_Enemy3:
         m_img = COPY_RESOURCE("Enemy3", CImage);
         hp = 150;
+        break;
+    case eType_Enemy4:
+        m_img = COPY_RESOURCE("Witch", CImage);
+        hp = 200;
         break;
     }
 
@@ -92,8 +118,9 @@ void Enemy::Update()
     case eState_Down:
         StateDown();
         break;
-
-
+    case eState_Attack:
+        StateAttack();
+        break;
     }
     m_img.UpdateAnimation();
 

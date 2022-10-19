@@ -26,6 +26,10 @@ private:
 	int m_damage_no;
 	//ヒットポイント
 	int m_hp;
+	//プレイヤー移動量
+	CVector2D ver;
+	//補間量
+	CVector2D sc_ver;
 	//各状態での挙動
 	void StateIdle();
 	void StateAttack();
@@ -38,6 +42,9 @@ public:
 	void Update();
 	void Draw();
 	void Collision(Base* b);
+	int GetFlip() {
+
+	}
 };
 
 

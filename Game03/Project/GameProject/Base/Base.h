@@ -10,6 +10,7 @@ enum {
 	eType_Ball,
 	eType_Enemy2,
 	eType_Enemy3,
+	eType_Enemy4,
 	eType_Bullet,
 	eType_Goal,
 	eType_Player_Attack,
