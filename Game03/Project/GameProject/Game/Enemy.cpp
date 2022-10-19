@@ -18,6 +18,7 @@ void Enemy::StateIdle()
     m_img.ChangeAnimation(0);
 
 
+
 }
 
 void Enemy::StateDamage()
@@ -85,7 +86,7 @@ Base(eType_Enemy) {
         m_img = COPY_RESOURCE("Witch", CImage);
         m_img.SetSize(262, 264);
         m_rect = CRect(-64, -128, 64, 0);
-        m_img.SetCenter(133,226);
+        m_img.SetCenter(133, 226);
         hp = 200;
         break;
     }
