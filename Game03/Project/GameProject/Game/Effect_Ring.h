@@ -7,6 +7,7 @@ private:
 	CImage m_img;
 	//”½“]ƒtƒ‰ƒO
 	bool m_flip;
+	
 public:
 	Effect_Ring(const char* name, const CVector2D& pos, bool flip);
 	void Update();
