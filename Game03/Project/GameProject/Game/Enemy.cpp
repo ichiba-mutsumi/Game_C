@@ -102,6 +102,9 @@ Base(eType_Enemy) {
        // m_img.SetCenter(48, 96);
         //座標設定
         m_pos_old = m_pos = p;
+        m_attack_no = rand();
+        //ダメージ番号
+        m_damage_no = -1;
         //m_down = false;
         m_is_ground = true;
         cnt = 30;

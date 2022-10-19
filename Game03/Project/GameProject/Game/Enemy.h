@@ -18,6 +18,7 @@ private:
 	bool m_down;
 	bool m_is_ground;
 	int m_damage_no;
+	int m_attack_no;
 	int hp;
 	int cnt;
 	//Šeó‘Ô‚Å‚Ì‹““®
@@ -25,10 +26,12 @@ private:
 	void StateDamage();
 	void StateDown();
 	void StateAttack();
-	
 public:
 	Enemy(const CVector2D& p, bool flip ,int type);
 	void Update();
 	void Draw();
 	void Collision(Base* b);
+	int GetAttackNo() {
+		return m_attack_no;
+	}
 };

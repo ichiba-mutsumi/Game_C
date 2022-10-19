@@ -180,6 +180,7 @@ void Player::Collision(Base* b)
 			}
 		}
 		break;
+		
 	case eType_Enemy:
 		if (Enemy* s = dynamic_cast<Enemy*>(b)) {
 			if (m_damage_no != s->GetAttackNo() && Base::CollisionRect(this, s)) {
