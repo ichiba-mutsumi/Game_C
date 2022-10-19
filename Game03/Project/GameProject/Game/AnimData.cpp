@@ -268,8 +268,8 @@ static TexAnim enemy_witch_stand[] = {
 	{ 15,8 },
 };
 TexAnimData enemy_witch_anim_data[] = {
-	ANIMDATA(enemy_witch_move),
 	ANIMDATA(enemy_witch_stand),
+	ANIMDATA(enemy_witch_move),
 	ANIMDATA(enemy_witch_attack),
 };
 TexAnimData enemy_anim_data[] = {
