@@ -22,6 +22,8 @@ private:
 	bool m_is_ground;
 	//攻撃番号
 	int m_attack_no;
+	//溜め時間(120)
+	int Ccnt;
 	//ダメージ番号
 	int m_damage_no;
 	//ヒットポイント
@@ -42,8 +44,11 @@ public:
 	void Update();
 	void Draw();
 	void Collision(Base* b);
-	int GetFlip() {
-
+	int GetFlipFlag() {
+		return !m_flip;
+	}
+	CVector2D GetPos() {
+		return m_pos;
 	}
 };
 

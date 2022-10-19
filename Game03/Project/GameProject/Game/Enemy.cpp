@@ -149,7 +149,7 @@ void Enemy::Draw()
 void Enemy::Collision(Base* b)
 {
     switch (b->m_type) {
-    case eType_Ball:
+    case eType_Flame:
         /*if (Base::CollisionRect(this, b)) {
             hp = -50;
             //m_down = true;

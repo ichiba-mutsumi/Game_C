@@ -22,6 +22,8 @@ CImage m_img;
 bool m_flip;
 //’eÁ–ÅŠÔ
 int cnt;
+//—­‚ßŠÔ(120)
+int Ccnt;
 //UŒ‚”Ô†
 int m_attack_no;
 //ƒ_ƒ[ƒW”Ô†
