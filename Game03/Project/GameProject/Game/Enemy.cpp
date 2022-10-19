@@ -62,23 +62,28 @@ Base(eType_Enemy) {
     {
     case eType_Enemy:
         m_img = COPY_RESOURCE("Enemy", CImage);
+        m_img.SetSize(96, 96);
         hp = 50;
         break;
     case eType_Enemy2:
         m_img = COPY_RESOURCE("Enemy2", CImage);
+        m_img.SetSize(96, 96);
         hp = 100;
         break;
     case eType_Enemy3:
         m_img = COPY_RESOURCE("Enemy3", CImage);
+        m_img.SetSize(96, 96);
         hp = 150;
         break;
     case eType_Enemy4:
         m_img = COPY_RESOURCE("Witch", CImage);
+        m_img.SetSize(262, 264);
         hp = 200;
         break;
     }
 
-        m_img.SetSize(96, 96);
+       //m_img.SetSize(96, 96);
+        
         //当たり判定用矩形設定
         m_rect = CRect(-32, -64, 32, 0);
         //再生アニメーション設定
