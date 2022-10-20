@@ -66,7 +66,7 @@ void Attack::StateAttack()
 	}
 }
 
-Attack::Attack(const CVector2D& p, bool flip,int type,int attack_no)
+Attack::Attack(const CVector2D& p, bool flip, int type, int attack_no)
 	:Base(eType_Flame)
 {
 	//‰æ‘œ•¡»

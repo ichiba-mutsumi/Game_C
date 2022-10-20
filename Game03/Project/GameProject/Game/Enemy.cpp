@@ -62,7 +62,7 @@ void Enemy::StateAttack(int type)
     m_img.ChangeAnimation(2, false);
     m_ang = atan2(v.x, v.y);
     
-    Base::Add(new Attack(m_pos, m_flip, eType_Flame,m_attack_no));
+    //Base::Add(new Attack(m_pos, m_flip, eType_Flame,m_attack_no));
       
     
 
