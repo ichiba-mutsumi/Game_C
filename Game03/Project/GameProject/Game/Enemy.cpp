@@ -80,6 +80,11 @@ Base(eType_Enemy) {
         m_img.SetSize(262, 264);
         hp = 200;
         break;
+    case eType_Enemy5:
+        m_img = COPY_RESOURCE("Dragon", CImage);
+        m_img.SetSize(154, 154);
+        hp = 400;
+        break;
     }
 
        //m_img.SetSize(96, 96);

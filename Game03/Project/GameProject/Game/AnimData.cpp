@@ -272,14 +272,46 @@ TexAnimData enemy_witch_anim_data[] = {
 	ANIMDATA(enemy_witch_move),
 	ANIMDATA(enemy_witch_attack),
 };
+
+
+static TexAnim enemy_Dragon_move[] = {
+	{ 10,8 },
+	{ 11,8 },
+	{ 12,8 },
+	{ 13,8 },
+	{ 14,8 },
+	{ 15,8 },
+	//{ 16,8 },
+	//{ 17,8 },
+	//{ 18,8 },
+	//{ 19,8 },
+};
+static TexAnim enemy_Dragon_attack[] = {
+	{ 0,8 },
+	{ 1,8 },
+	{ 2,8 },
+	{ 3,8 },
+	{ 4,8 },
+};
+static TexAnim enemy_Dragon_stand[] = {
+	{ 5,8 },
+	{ 6,8 },
+	{ 7,8 },
+	{ 8,8 },
+	//{ 9,8 },
+};
+TexAnimData enemy_Dragon_anim_data[] = {
+	ANIMDATA(enemy_Dragon_stand),
+	ANIMDATA(enemy_Dragon_move),
+	ANIMDATA(enemy_Dragon_attack),
+};
+
+
 TexAnimData enemy_anim_data[] = {
 	ANIMDATA(enemyIdle),
 	ANIMDATA(enemyIdle),
 	ANIMDATA(enemyIdle),
 };
-
-
-
 
 static TexAnim _effect_blood[] = {
 	{ 0,1 },
