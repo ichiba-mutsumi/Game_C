@@ -182,9 +182,9 @@ void Player::Collision(Base* b)
 		break;
 		
 	case eType_Enemy:
-		if (Enemy* s = dynamic_cast<Enemy*>(b)) {
-			if (m_damage_no != s->GetAttackNo() && Base::CollisionRect(this, s)) {
-				m_damage_no = s->GetAttackNo();
+		if (Enemy* e = dynamic_cast<Enemy*>(b)) {
+			if (m_damage_no != e->GetAttackNo() && Base::CollisionRect(this, e)) {
+				m_damage_no = e->GetAttackNo();
 				m_hp -= 50;
 				if (m_hp <= 0) {
 					m_state = eState_Down;
@@ -434,6 +434,7 @@ void Player::StateAttack()
 void Player::StateDamage()
 {
 	m_img.ChangeAnimation(eAnimDamage, false);
+
 	if (m_img.CheckAnimationEnd()) {
 		m_state = eState_Idle;
 	}

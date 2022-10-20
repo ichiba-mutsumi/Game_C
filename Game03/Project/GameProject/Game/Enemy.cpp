@@ -5,6 +5,7 @@
 #include "GameData.h"
 #include "Map.h"
 #include "Attack.h"
+#include"EnemyBullet.h"
 
 void Enemy::StateIdle(int type)
 {
@@ -26,7 +27,7 @@ void Enemy::StateIdle(int type)
         break;
     case eType_Enemy4:
         if (abs(v.x) <= 300) {
-            m_state=eState_Attack;
+            m_state = eState_Attack;
        }
         
         break;
@@ -61,8 +62,7 @@ void Enemy::StateAttack(int type)
     
     m_img.ChangeAnimation(2, false);
     m_ang = atan2(v.x, v.y);
-    
-    //Base::Add(new Attack(m_pos, m_flip, eType_Flame,m_attack_no));
+     Base::Add(new EnemyBullet(eType_Bullet, m_pos, m_ang, 4));
       
     
 
