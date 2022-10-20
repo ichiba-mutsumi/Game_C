@@ -9,8 +9,8 @@ private:
 enum {
 	eState_Idle,
 	eState_Attack,
-	
-
+	eState_Attack2,
+	eState_Attack3,
 
 };
 
@@ -31,7 +31,8 @@ int m_damage_no;
 //Šeó‘Ô‚Å‚Ì‹““®
 void StateIdle();
 void StateAttack();
-
+void StateAttack2();
+void StateAttack3();
 
 public:
 	Attack(const CVector2D& p, bool flip,int type,int attack_no);
