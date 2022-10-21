@@ -49,7 +49,7 @@ Game::~Game()
 
 void Game::Update()
 {
-	std::cout << "game" << std::endl;
+	//std::cout << "game" << std::endl;
 	//ゴールがなければゲームシーン終了
 	if (!Base::FindObject(eType_Goal)) {
 		SetKill();

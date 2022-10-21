@@ -178,7 +178,7 @@ Base(eType_Enemy) {
 
 void Enemy::Update()
 {
-    std::cout << "Enemy" << std::endl;
+    //std::cout << "Enemy" << std::endl;
     m_pos_old = m_pos;
    
     if (m_is_ground && m_vec.y > GRAVITY * 4) {

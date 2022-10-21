@@ -61,9 +61,6 @@
     <ClCompile Include="Game\EnemyBullet.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Effect_Ring_2.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Base\Base.h">
@@ -121,9 +118,6 @@
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="Game\EnemyBullet.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\Effect_Ring_2.h">
       <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>
