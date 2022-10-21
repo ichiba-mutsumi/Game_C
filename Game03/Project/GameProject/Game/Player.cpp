@@ -356,13 +356,17 @@ void Player::StateAttack()
 		Base* b = Base::FindObject(eType_Flame);
 		if (!b) {
 			Base::Add(new Attack(CVector2D(1280, 560), m_flip, eType_Flame, m_attack_no));
-			Base::Add(new Effect_Ring("Effect_Ring", m_pos, m_flip));
+			Base::Add(new Effect_Ring("Effect_Ring", m_pos, m_flip, m_ang));
 			
 		}
 		if (Ccnt == 60)
 		{
-			Base::Add(new Effect_Ring("Effect_Ring2", m_pos, m_flip));
+			Base::Add(new Effect_Ring("Effect_Ring2", m_pos, m_flip, m_ang));	
 		}
+		/*
+		if (Ccnt <= 60 && Ccnt > 0) {
+			Attack2 = true;
+		}*/
 	}
 		/*
 		if (!b && m_flip)
