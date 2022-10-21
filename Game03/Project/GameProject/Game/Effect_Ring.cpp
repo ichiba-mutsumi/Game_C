@@ -1,7 +1,8 @@
 #include "Effect_Ring.h"
 #include"Player.h"
 
-Effect_Ring::Effect_Ring(const char* name, const CVector2D& pos, bool flip) :
+#include "Attack.h"
+Effect_Ring::Effect_Ring(const char* name, const CVector2D& pos, bool flip, float ang) :
 	Base(eType_AtkEffect)
 {
 	//画像複製
@@ -17,20 +18,29 @@ Effect_Ring::Effect_Ring(const char* name, const CVector2D& pos, bool flip) :
 	m_img.ChangeAnimation(0, false);
 	//反転フラグ
 	m_flip = flip;
+	m_ang = ang;
 	
 }
 
 void Effect_Ring::Update()
 {
+	Base* b = Base::FindObject(eType_Player);
+	Player* f = dynamic_cast<Player*>(b);
+	
 	//アニメーション更新
 	m_img.UpdateAnimation();
+	//GetAttack2Flag()
+	/*
+	if () {
+		m_img.SetAng(DtoR(90));
+	}*/
 	//アニメーション終了チェック
-	if (m_img.CheckAnimationEnd()|| !HOLD(CInput::eButton1)) {
+
+	if (m_img.CheckAnimationEnd() || !HOLD(CInput::eButton1)) {
 		//エフェクトを削除
 		SetKill();
 	}
-	Base* b = Base::FindObject(eType_Player);
-	Player* f = dynamic_cast<Player*>(b);
+	
 	if (b) {
 		m_flip = f->GetFlipFlag();
 		if (m_flip) {
@@ -40,6 +50,9 @@ void Effect_Ring::Update()
 			m_pos = f->GetPos() + CVector2D(-60, -70);
 		}
 	}
+	
+	
+	
 }
 
 void Effect_Ring::Draw()

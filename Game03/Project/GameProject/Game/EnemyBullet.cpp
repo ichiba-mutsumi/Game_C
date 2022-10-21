@@ -17,13 +17,15 @@ void EnemyBullet::Update(){
 	cnt++;
 	Base* b = Base::FindObject(eType_Player);
 	Player* f = dynamic_cast<Player*>(b);
-	CVector2D Plpos = f->GetPos();
-	CVector2D diff = Plpos - m_pos;
-	m_ang = atan2(diff.x, diff.y);
-	m_vec = CVector2D(sin(m_ang), cos(m_ang)) * m_speed;
-	m_pos += m_vec;
-	if (cnt >= 180) {
-		SetKill();
+	if (b) {
+		CVector2D Plpos = f->GetPos();
+		CVector2D diff = Plpos - m_pos;
+		m_ang = atan2(diff.x, diff.y);
+		m_vec = CVector2D(sin(m_ang), cos(m_ang)) * m_speed;
+		m_pos += m_vec;
+		if (cnt >= 180) {
+			SetKill();
+		}
 	}
 }
 void EnemyBullet::Draw(){

@@ -74,19 +74,22 @@ void Attack::StateAttack()
 void Attack::StateAttack2()
 {
 	m_img.UpdateAnimation();
-	m_img.SetSize(128, 32);
-	m_img.SetCenter(64, 16);
-	cnt--;
-	m_rect = CRect(-16, -16 * 2, 16, 16 * 2);
-	if (m_flip) {
-		CVector2D vec = CVector2D(10, 0);
-		m_pos += vec;
-		m_img.SetSize(128 * 2, 32 * 2);
+	m_img.SetSize(16 * 2, 144);
+	//m_img.SetAng(DtoR(90));
+	Base* b = Base::FindObject(eType_Player);
+	Player* f = dynamic_cast<Player*>(b);
+	if (b) {
+		m_pos = f->GetPos() + CVector2D(0, -20);
 	}
-	else {
-		CVector2D vec = CVector2D(10, 0);
-		m_pos -= vec;
-		m_img.SetSize(128 * 2, 32 * 2);
+	//m_img.SetCenter(128, 0);
+	cnt--;
+	if (cnt == 59) {
+		//Base::Add(new Effect_Ring("Effect_Ring2", m_pos + CVector2D(60, 0), m_flip, m_ang));
+		m_rect = CRect(-16 * 7, -16 * 2, 16 * 7, 16 * 2);
+		
+	}
+	if (cnt == 30) {
+		m_rect = CRect(-16 * 10, -16 * 2, 16 * 10, 16 * 2);
 	}
 	if (cnt <= 0) {
 		SetKill();
@@ -129,6 +132,7 @@ Attack::Attack(const CVector2D& p, bool flip,int type,int attack_no)	:Base(eType
 	//m_img.SetCenter(64, 16);
 	//”½“]ƒtƒ‰ƒO
 	m_flip = flip;
+
 	//m_rect = CRect(-16, -16, 16, 16);
 	//’Êíó‘Ô‚Ö
 	m_state = eState_Idle;
@@ -144,7 +148,9 @@ Attack::Attack(const CVector2D& p, bool flip,int type,int attack_no)	:Base(eType
 	//Player”½“]ƒtƒ‰ƒOŽæ“¾
 	Base* b = Base::FindObject(eType_Player);
 	Player* f = dynamic_cast<Player*>(b);
-	m_flip = f->GetFlipFlag();
+	if (b) {
+		m_flip = f->GetFlipFlag();
+	}
 }
 void Attack::Update()
 {
