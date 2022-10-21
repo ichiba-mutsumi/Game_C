@@ -78,7 +78,9 @@ void Attack::StateAttack2()
 	//m_img.SetAng(DtoR(90));
 	Base* b = Base::FindObject(eType_Player);
 	Player* f = dynamic_cast<Player*>(b);
-	m_pos = f->GetPos() + CVector2D(0, -20);
+	if (b) {
+		m_pos = f->GetPos() + CVector2D(0, -20);
+	}
 	//m_img.SetCenter(128, 0);
 	cnt--;
 	if (cnt == 59) {
@@ -93,6 +95,7 @@ void Attack::StateAttack2()
 		SetKill();
 	}
 }
+
 
 void Attack::StateAttack3()
 {
@@ -116,8 +119,7 @@ void Attack::StateAttack3()
 	}
 }
 
-Attack::Attack(const CVector2D& p, bool flip,int type,int attack_no)
-	:Base(eType_Flame)
+Attack::Attack(const CVector2D& p, bool flip,int type,int attack_no)	:Base(eType_Flame)
 {
 	//‰æ‘œ•¡»
 	m_img = COPY_RESOURCE("Effect_Flame", CImage);
@@ -146,7 +148,9 @@ Attack::Attack(const CVector2D& p, bool flip,int type,int attack_no)
 	//Player”½“]ƒtƒ‰ƒOæ“¾
 	Base* b = Base::FindObject(eType_Player);
 	Player* f = dynamic_cast<Player*>(b);
-	m_flip = f->GetFlipFlag();
+	if (b) {
+		m_flip = f->GetFlipFlag();
+	}
 }
 void Attack::Update()
 {

@@ -1,5 +1,6 @@
 #include "Effect_Ring.h"
 #include"Player.h"
+
 #include "Attack.h"
 Effect_Ring::Effect_Ring(const char* name, const CVector2D& pos, bool flip, float ang) :
 	Base(eType_AtkEffect)
@@ -34,17 +35,22 @@ void Effect_Ring::Update()
 		m_img.SetAng(DtoR(90));
 	}*/
 	//アニメーション終了チェック
+
 	if (m_img.CheckAnimationEnd() || !HOLD(CInput::eButton1)) {
 		//エフェクトを削除
 		SetKill();
 	}
-	m_flip = f->GetFlipFlag();
-	if (m_flip) {
-		m_pos = f->GetPos() + CVector2D(+60, -70);
+	
+	if (b) {
+		m_flip = f->GetFlipFlag();
+		if (m_flip) {
+			m_pos = f->GetPos() + CVector2D(+60, -70);
+		}
+		else {
+			m_pos = f->GetPos() + CVector2D(-60, -70);
+		}
 	}
-	else {
-		m_pos = f->GetPos() + CVector2D(-60, -70);
-	}
+	
 	
 	
 }
