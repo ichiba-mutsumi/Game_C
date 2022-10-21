@@ -31,12 +31,14 @@ void Effect_Ring::Update()
 	}
 	Base* b = Base::FindObject(eType_Player);
 	Player* f = dynamic_cast<Player*>(b);
-	m_flip = f->GetFlipFlag();
-	if (m_flip) {
-		m_pos = f->GetPos() + CVector2D(+60, -70);
-	}
-	else {
-		m_pos = f->GetPos() + CVector2D(-60, -70);
+	if (b) {
+		m_flip = f->GetFlipFlag();
+		if (m_flip) {
+			m_pos = f->GetPos() + CVector2D(+60, -70);
+		}
+		else {
+			m_pos = f->GetPos() + CVector2D(-60, -70);
+		}
 	}
 }
 

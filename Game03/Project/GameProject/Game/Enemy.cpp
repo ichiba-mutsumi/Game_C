@@ -6,11 +6,9 @@
 #include "Map.h"
 #include "Attack.h"
 #include"EnemyBullet.h"
-
+#include <iostream>
 void Enemy::StateIdle(int type)
 {
-    
-    m_pos.x--;
 
     //const float move_speed = 4;
 
@@ -22,10 +20,13 @@ void Enemy::StateIdle(int type)
     case eType_Enemy1:
     case eType_Enemy2:
     case eType_Enemy3:
-        m_pos.x--;
+    case eType_Enemy6:
+    case eType_Enemy7:
+    case eType_Enemy9:
         
         break;
     case eType_Enemy4:
+    case eType_Enemy8:
         if (abs(v.x) <= 300) {
             m_state = eState_Attack;
        }
@@ -98,7 +99,7 @@ Base(eType_Enemy) {
         m_img.SetSize(96, 96);
         m_rect = CRect(-32, -64, 32, 0);
         m_img.SetCenter(48, 96);
-        hp = 50;
+        hp = 100;
         break;
     case eType_Enemy2:
         m_img = COPY_RESOURCE("Enemy2", CImage);
@@ -112,13 +113,41 @@ Base(eType_Enemy) {
         m_img.SetSize(96, 96);
         m_rect = CRect(-32, -64, 32, 0);
         m_img.SetCenter(48, 96);
-        hp = 150;
+        hp = 100;
         break;
     case eType_Enemy4:
         m_img = COPY_RESOURCE("Witch", CImage);
         m_img.SetSize(262, 264);
         m_rect = CRect(-64, -128, 64, 0);
         m_img.SetCenter(133, 226);
+        hp = 250;
+        break;
+    case eType_Enemy6:
+        m_img = COPY_RESOURCE("Enemy", CImage);
+        m_img.SetSize(160,162);
+        m_rect = CRect(-35, -110, 75, 0);
+        m_img.SetCenter(60, 150);
+        hp = 150;
+        break;
+    case eType_Enemy7:
+        m_img = COPY_RESOURCE("Enemy2", CImage);
+        m_img.SetSize(160, 162);
+        m_rect = CRect(-35, -110, 75, 0);
+        m_img.SetCenter(60, 150);
+        hp = 200;
+        break;
+    case eType_Enemy8:
+        m_img = COPY_RESOURCE("Witch2", CImage);
+        m_img.SetSize(262, 264);
+        m_rect = CRect(-64, -128, 64, 0);
+        m_img.SetCenter(133, 226);
+        hp = 250;
+        break;
+    case eType_Enemy9:
+        m_img = COPY_RESOURCE("Enemy3", CImage);
+        m_img.SetSize(160, 162);
+        m_rect = CRect(-35, -110, 75, 0);
+        m_img.SetCenter(60, 150);
         hp = 200;
         break;
     }
@@ -144,10 +173,12 @@ Base(eType_Enemy) {
         cnt = 30;
         bcnt = 180;
         EnemyType=type;
+        m_vec.x--;
 }
 
 void Enemy::Update()
 {
+    std::cout << "Enemy" << std::endl;
     m_pos_old = m_pos;
    
     if (m_is_ground && m_vec.y > GRAVITY * 4) {
@@ -158,6 +189,9 @@ void Enemy::Update()
     case eType_Enemy1:
     case eType_Enemy2:
     case eType_Enemy3:
+    case eType_Enemy6:
+    case eType_Enemy7:
+    case eType_Enemy9:
         //èdóÕÇ…ÇÊÇÈóéâ∫
          m_vec.y += GRAVITY;
          break;
@@ -188,11 +222,16 @@ void Enemy::Update()
     m_img.UpdateAnimation();
 
     Base* b = Base::FindObject(eType_Player);
-    
-    Player* f = dynamic_cast<Player*>(b);
-    v = f->m_pos - m_pos;
-
-
+    if (b) {
+        Player* f = dynamic_cast<Player*>(b);
+        v = f->m_pos - m_pos; 
+    }
+    if (m_vec.x < 0) {
+        m_flip = false;
+    }
+    else if (m_vec.x > 0) {
+        m_flip = true;
+    }
 
 
 
@@ -243,8 +282,11 @@ void Enemy::Collision(Base* b)
     case eType_Field:
         if (Map* m = dynamic_cast<Map*>(b)) {
             int t = m->CollisionMap(CVector2D(m_pos.x, m_pos_old.y), m_rect);
-            if (t != 0)
+            if (t != 0) {
                 m_pos.x = m_pos_old.x;
+                m_vec.x *= -1;
+                
+            }
             t = m->CollisionMap(CVector2D(m_pos_old.x, m_pos.y), m_rect);
             if (t != 0) {
                 m_pos.y = m_pos_old.y;
