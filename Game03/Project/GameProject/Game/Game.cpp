@@ -11,6 +11,7 @@
 #include "Goal2.h"
 #include"GameData.h"
 #include"Attack.h"
+#include <iostream>
 Game::Game() :Base(eType_Scene)
 {
 	//Base::Add(new Field());
@@ -48,6 +49,7 @@ Game::~Game()
 
 void Game::Update()
 {
+	std::cout << "game" << std::endl;
 	//ゴールがなければゲームシーン終了
 	if (!Base::FindObject(eType_Goal)) {
 		SetKill();
