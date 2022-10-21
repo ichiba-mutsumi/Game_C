@@ -8,6 +8,7 @@ enum {
 	eType_Player,
 	eType_Enemy,
 	eType_Flame,
+	eType_Enemy1,
 	eType_Enemy2,
 	eType_Enemy3,
 	eType_Enemy4,

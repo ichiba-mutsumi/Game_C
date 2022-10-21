@@ -114,12 +114,12 @@ static TexAnim playerAttack03End[] = {
 	{ 83,4 },
 };
 static TexAnim playerDamage[] = {
-	{ 3,2 },
-	{ 4,2 },
+	{ 3,6 },
+	{ 4,6 },
 };
 static TexAnim playerDamageEnd[] = {
-	{ 3,2 },
-	{ 4,2 },
+	{ 3,6 },
+	{ 4,6 },
 };
 static TexAnim playerDeath[] = {
 	{ 96,4 },

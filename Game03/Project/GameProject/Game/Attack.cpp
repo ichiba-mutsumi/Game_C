@@ -47,7 +47,26 @@ void Attack::StateAttack()
 	m_rect = CRect(-16, -16*2, 16, 16*2);	
 	if (m_flip) {
 		CVector2D vec = CVector2D(10, 0);
-		//Base::Add(new Effect_Ring("Effect_Ring", m_pos + CVector2D(+60, 0), true));
+		m_pos += vec;
+	}
+	else {
+		CVector2D vec = CVector2D(10, 0);
+		m_pos -= vec;
+	}
+	if (cnt <= 0) {
+		SetKill();
+	}
+}
+
+void Attack::StateAttack2()
+{
+	m_img.UpdateAnimation();
+	m_img.SetSize(128, 32);
+	m_img.SetCenter(64, 16);
+	cnt--;
+	m_rect = CRect(-16, -16 * 2, 16, 16 * 2);
+	if (m_flip) {
+		CVector2D vec = CVector2D(10, 0);
 		m_pos += vec;
 		if (Ccnt < 60) {
 			m_img.SetSize(128 * 2, 32 * 2);
@@ -55,7 +74,6 @@ void Attack::StateAttack()
 	}
 	else {
 		CVector2D vec = CVector2D(10, 0);
-		//Base::Add(new Effect_Ring("Effect_Ring", m_pos + CVector2D(-60, 0), false));
 		m_pos -= vec;
 		if (Ccnt < 60) {
 			m_img.SetSize(128 * 2, 32 * 2);
@@ -64,6 +82,10 @@ void Attack::StateAttack()
 	if (cnt <= 0) {
 		SetKill();
 	}
+}
+
+void Attack::StateAttack3()
+{
 }
 
 Attack::Attack(const CVector2D& p, bool flip,int type,int attack_no)
@@ -90,7 +112,7 @@ Attack::Attack(const CVector2D& p, bool flip,int type,int attack_no)
 	//攻撃番号
 	m_attack_no = rand();
 	//ダメージ番号
-	m_attack_no = -1;
+	m_damage_no = -1;
 	m_attack_no = attack_no;
 	//Player反転フラグ取得
 	Base* b = Base::FindObject(eType_Player);

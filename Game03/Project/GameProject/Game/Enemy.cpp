@@ -5,22 +5,39 @@
 #include "GameData.h"
 #include "Map.h"
 #include "Attack.h"
+#include"EnemyBullet.h"
 
-void Enemy::StateIdle()
+void Enemy::StateIdle(int type)
 {
     
     m_pos.x--;
 
-    const float move_speed = 4;
+    //const float move_speed = 4;
 
-    bool move_flag = false;
+    //bool move_flag = false;
 
     m_img.ChangeAnimation(0);
+    switch (EnemyType){
+
+    case eType_Enemy1:
+    case eType_Enemy2:
+    case eType_Enemy3:
+        m_pos.x--;
+        
+        break;
+    case eType_Enemy4:
+        if (abs(v.x) <= 300) {
+            m_state = eState_Attack;
+       }
+        
+        break;
+    }
+
 
 
 }
 
-void Enemy::StateDamage()
+void Enemy::StateDamage(int type)
 {
     
     cnt--;
@@ -28,11 +45,11 @@ void Enemy::StateDamage()
     m_img.ChangeAnimation(0, false);
     if (cnt<=0) {
         m_img.ChangeAnimation(eAnimIdle);
-        m_state = eState_Idle;
+        m_state = eState_Damage;
     }
 }
 
-void Enemy::StateDown()
+void Enemy::StateDown(int type)
 {
     m_img.ChangeAnimation(0);
     SetKill();
@@ -40,14 +57,27 @@ void Enemy::StateDown()
 
 }
 
-void Enemy::StateAttack()
+void Enemy::StateAttack(int type)
 {
     
     m_img.ChangeAnimation(2, false);
-
+    m_ang = atan2(-v.y, v.x);
+    //int type, const CVector2D& pos, float ang, float speed
+    Base::Add(new EnemyBullet(eType_Bullet, m_pos, m_ang, 4));
+      
+    
 
     if (m_img.CheckAnimationEnd()) {
 
+        m_state = eState_Wait;
+    }
+}
+
+void Enemy::StateWait(int type)
+{
+
+    if (--bcnt<=0) {
+        bcnt = 180;
         m_state = eState_Idle;
     }
 }
@@ -60,48 +90,73 @@ Base(eType_Enemy) {
     //画像複製
     switch (type)
     {
-    case eType_Enemy:
+    case eType_Enemy1:
         m_img = COPY_RESOURCE("Enemy", CImage);
         m_img.SetSize(96, 96);
+        m_rect = CRect(-32, -64, 32, 0);
+        m_img.SetCenter(48, 96);
         hp = 50;
         break;
     case eType_Enemy2:
         m_img = COPY_RESOURCE("Enemy2", CImage);
         m_img.SetSize(96, 96);
+        m_rect = CRect(-32, -64, 32, 0);
+        m_img.SetCenter(48, 96);
         hp = 100;
         break;
     case eType_Enemy3:
         m_img = COPY_RESOURCE("Enemy3", CImage);
         m_img.SetSize(96, 96);
+        m_rect = CRect(-32, -64, 32, 0);
+        m_img.SetCenter(48, 96);
         hp = 150;
         break;
     case eType_Enemy4:
         m_img = COPY_RESOURCE("Witch", CImage);
         m_img.SetSize(262, 264);
+        m_rect = CRect(-64, -128, 64, 0);
+        m_img.SetCenter(133, 226);
         hp = 200;
         break;
-    case eType_Enemy5:
+    /*case eType_Enemy5:
         m_img = COPY_RESOURCE("Dragon", CImage);
-        m_img.SetSize(154, 154);
-        hp = 400;
+        m_img.SetSize(262, 264);
+        m_rect = CRect(-64, -128, 64, 0);
+        m_img.SetCenter(133, 226);
+        hp = 200;
         break;
+        */
+     case eType_Enemy5:
+        m_img = COPY_RESOURCE("Dragon", CImage);
+        m_img.SetSize(460, 250);
+        m_rect = CRect(-288, 356, 78, 138);
+        m_img.SetCenter(328, -113);
+        hp = 400;
+     break;
+    
     }
 
        //m_img.SetSize(96, 96);
         
         //当たり判定用矩形設定
-        m_rect = CRect(-32, -64, 32, 0);
+       // m_rect = CRect(-32, -64, 32, 0);
         //再生アニメーション設定
         m_img.ChangeAnimation(0);
         //反転フラグ
         m_flip = flip;
         //中心位置設定
-        m_img.SetCenter(48, 96);
+       // m_img.SetCenter(48, 96);
         //座標設定
         m_pos_old = m_pos = p;
+        m_attack_no = rand();
+        //ダメージ番号
+        m_damage_no = -1;
         //m_down = false;
         m_is_ground = true;
+        CVector2D v(0, 0);
         cnt = 30;
+        bcnt = 180;
+        EnemyType=type;
 }
 
 void Enemy::Update()
@@ -112,29 +167,43 @@ void Enemy::Update()
         m_is_ground = false;
 
     }
-    //重力による落下
-    m_vec.y += GRAVITY;
+    switch (EnemyType) {
+    case eType_Enemy1:
+    case eType_Enemy2:
+    case eType_Enemy3:
+        //重力による落下
+         m_vec.y += GRAVITY;
+         break;
+
+    }
+   
     m_pos += m_vec;
     switch (m_state) {
         //通常状態
     case eState_Idle:
-        StateIdle();
+        StateIdle(0);
         break;
         //ダメージ状態
     case eState_Damage:
-        StateDamage();
+        StateDamage(0);
         break;
         //ダウン状態
     case eState_Down:
-        StateDown();
+        StateDown(0);
         break;
     case eState_Attack:
-        StateAttack();
+        StateAttack(0);
+        break;
+    case eState_Wait:
+        StateWait(0);
         break;
     }
     m_img.UpdateAnimation();
 
-
+    Base* b = Base::FindObject(eType_Player);
+    
+    Player* f = dynamic_cast<Player*>(b);
+    v = f->m_pos - m_pos;
 
 
 

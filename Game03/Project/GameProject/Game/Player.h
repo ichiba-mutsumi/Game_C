@@ -22,6 +22,7 @@ private:
 	bool m_is_ground;
 	//UŒ‚”Ô†
 	int m_attack_no;
+
 	//—­‚ßŠÔ(120)
 	int Ccnt;
 	//ƒ_ƒ[ƒW”Ô†

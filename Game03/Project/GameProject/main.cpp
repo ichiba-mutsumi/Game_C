@@ -85,6 +85,7 @@ void Init(void)
 	ADD_RESOURCE("Effect_Flame", CImage::CreateImage("Image/Effect_Flame.png", effect_flame_anim_data, 1080, 320));
 	ADD_RESOURCE("Effect_Ring", CImage::CreateImage("Image/Effect_Ring.png", effect_ring_anim_data, 160, 720));
 	ADD_RESOURCE("Effect_Ring2", CImage::CreateImage("Image/Effect_Ring_2.png", effect_ring_anim_data, 240, 720));
+	ADD_RESOURCE("Effect_Spiral", CImage::CreateImage("Image/Effect_Spiral.png", effect_ring_anim_data, 540, 720));
 	//ADD_RESOURCE("Effect_Kira", CImage::CreateImage("Image/Effect_kirakira.png", effect_ring_anim_data, 360, 360));
 	ADD_RESOURCE("Goal", CImage::CreateImage("Image/Goal.png"));
 	ADD_RESOURCE("Title", CImage::CreateImage("Image/Title.png"));
