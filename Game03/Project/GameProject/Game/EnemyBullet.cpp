@@ -3,10 +3,14 @@
 #include "Effect_Ring.h"
 EnemyBullet::EnemyBullet(int type, const CVector2D& pos, float ang, float speed)
 	:Base(eType_Bullet){
+	
+	m_rect = CRect(-16, -16, 16, 16);
+	m_img = COPY_RESOURCE("ball", CImage);
 	m_pos = pos;
-	m_img.SetCenter(16, 16);
+	m_img.SetCenter(8, 8);
 	m_ang = ang;
 	m_speed = speed;
+	
 }
 void EnemyBullet::Update(){
 

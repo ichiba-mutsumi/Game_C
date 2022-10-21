@@ -61,8 +61,10 @@ void Enemy::StateAttack(int type)
 {
     
     m_img.ChangeAnimation(2, false);
-    m_ang = atan2(v.x, v.y);
-     Base::Add(new EnemyBullet(eType_Bullet, m_pos, m_ang, 4));
+
+    m_ang = atan2(-v.y, v.x);
+    //int type, const CVector2D& pos, float ang, float speed
+    Base::Add(new EnemyBullet(eType_Bullet, m_pos, m_ang, 4));
       
     
 
