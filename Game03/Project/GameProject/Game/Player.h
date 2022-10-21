@@ -20,6 +20,7 @@ private:
 	bool m_flip;
 	//’…’nƒtƒ‰ƒO
 	bool m_is_ground;
+	
 	//UŒ‚”Ô†
 	int m_attack_no;
 
@@ -48,9 +49,11 @@ public:
 	int GetFlipFlag() {
 		return !m_flip;
 	}
+	
 	CVector2D GetPos() {
 		return m_pos;
 	}
+	
 };
 
 

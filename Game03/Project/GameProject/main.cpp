@@ -4,7 +4,7 @@
 #define SCREEN_HEIGHT 720
 #include "Base/Base.h"
 #include "Game/AnimData.h"
-//#include "Game/Enemy.h"
+#include "Game/Enemy.h"
 #include "Game/Player.h"
 #include "Game/Field.h"
 #include"Game/UI.h"
@@ -74,7 +74,8 @@ void Init(void)
 	ADD_RESOURCE("Enemy2", CImage::CreateImage("Image/Enemy2.png", enemy_anim_data, 48, 48));
 	ADD_RESOURCE("Enemy3", CImage::CreateImage("Image/Enemy3.png", enemy_anim_data, 48, 48));
 	ADD_RESOURCE("Witch", CImage::CreateImage("Image/Witch.png", enemy_witch_anim_data, 131,132));
-	ADD_RESOURCE("Dragon", CImage::CreateImage("Image/Dragon.png", enemy_Dragon_anim_data, 230, 150));
+ADD_RESOURCE("Witch2", CImage::CreateImage("Image/Witch2.png", enemy_witch_anim_data, 131, 132));
+ADD_RESOURCE("Dragon", CImage::CreateImage("Image/Dragon.png", enemy_Dragon_anim_data, 230, 150));
 	ADD_RESOURCE("Sky", CImage::CreateImage("Image/Sky.png"));
 	ADD_RESOURCE("Town", CImage::CreateImage("Image/Town.png"));
 	ADD_RESOURCE("ForeGround", CImage::CreateImage("Image/ForeGround.png"));

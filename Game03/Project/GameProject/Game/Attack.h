@@ -20,6 +20,7 @@ int m_state;
 CImage m_img;
 //”½“]ƒtƒ‰ƒO
 bool m_flip;
+
 //’eÁ–ÅŠÔ
 int cnt;
 //—­‚ßŠÔ(120)

@@ -11,6 +11,7 @@
 #include "../Title/Title.h"
 #include "../Game/Attack.h"
 #include "Effect_Ring.h" 
+#include <iostream>
 
 Player::Player(const CVector2D& p, bool flip) :
 	Base(eType_Player) {
@@ -39,7 +40,7 @@ Player::Player(const CVector2D& p, bool flip) :
 	//溜め時間
 	Ccnt = 120;
 	//ヒットポイント
-	m_hp = 500;
+	m_hp = 50;
 	//プレイヤー移動量
 	CVector2D ver(0, 0);
 	//カメラ移動量
@@ -55,6 +56,7 @@ Player::Player(const CVector2D& p, bool flip) :
 
 void Player::Update() {
 
+	//std::cout << "Player" << std::endl;
 	m_pos_old = m_pos;
 	
 	//待機アニメーション
@@ -356,13 +358,17 @@ void Player::StateAttack()
 		Base* b = Base::FindObject(eType_Flame);
 		if (!b) {
 			Base::Add(new Attack(CVector2D(1280, 560), m_flip, eType_Flame, m_attack_no));
-			Base::Add(new Effect_Ring("Effect_Ring", m_pos, m_flip));
+			Base::Add(new Effect_Ring("Effect_Ring", m_pos, m_flip, m_ang));
 			
 		}
 		if (Ccnt == 60)
 		{
-			Base::Add(new Effect_Ring("Effect_Ring2", m_pos, m_flip));
+			Base::Add(new Effect_Ring("Effect_Ring2", m_pos, m_flip, m_ang));	
 		}
+		/*
+		if (Ccnt <= 60 && Ccnt > 0) {
+			Attack2 = true;
+		}*/
 	}
 		/*
 		if (!b && m_flip)
