@@ -40,7 +40,7 @@ Player::Player(const CVector2D& p, bool flip) :
 	//溜め時間
 	Ccnt = 120;
 	//ヒットポイント
-	m_hp = 50;
+	m_hp = 500;
 	//プレイヤー移動量
 	CVector2D ver(0, 0);
 	//カメラ移動量
