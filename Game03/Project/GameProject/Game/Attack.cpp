@@ -5,9 +5,9 @@
 #include"Effect_Ring.h"
 void Attack::StateIdle()
 {
-	Ccnt--;
-	if (Ccnt <= 0) {
-		Ccnt = 0;
+	Ccnt++;
+	if (Ccnt >= 120) {
+		Ccnt = 120;
 	}
 	m_img.UpdateAnimation();
 	m_img.SetSize(32, 8);
@@ -16,7 +16,20 @@ void Attack::StateIdle()
 	Base* b = Base::FindObject(eType_Player);
 	if (!HOLD(CInput::eButton1)) {
 		//UŒ‚ó‘Ô‚ÖˆÚs
-		m_state = eState_Attack;
+		
+		
+		if (Ccnt < 60){
+			m_state = eState_Attack;
+		}
+		else if(Ccnt >= 60 && Ccnt <= 119) 
+		{
+			m_state = eState_Attack2;
+		}
+		else if (Ccnt == 120)
+		{
+			m_state = eState_Attack3;
+		}
+		
 	}
 	if (HOLD(CInput::eLeft)) {
 		//”½“]ƒtƒ‰ƒO
@@ -68,28 +81,42 @@ void Attack::StateAttack2()
 	if (m_flip) {
 		CVector2D vec = CVector2D(10, 0);
 		m_pos += vec;
-		if (Ccnt < 60) {
-			m_img.SetSize(128 * 2, 32 * 2);
-		}
+		m_img.SetSize(128 * 2, 32 * 2);
 	}
 	else {
 		CVector2D vec = CVector2D(10, 0);
 		m_pos -= vec;
-		if (Ccnt < 60) {
-			m_img.SetSize(128 * 2, 32 * 2);
-		}
+		m_img.SetSize(128 * 2, 32 * 2);
 	}
 	if (cnt <= 0) {
 		SetKill();
 	}
 }
 
+
 void Attack::StateAttack3()
 {
+	m_img.UpdateAnimation();
+	m_img.SetSize(128, 32);
+	m_img.SetCenter(64, 16);
+	cnt--;
+	m_rect = CRect(-16, -16 * 2, 16, 16 * 2);
+	if (m_flip) {
+		CVector2D vec = CVector2D(10, 0);
+		m_pos += vec;
+		m_img.SetSize(128 * 3, 32 * 2);
+	}
+	else {
+		CVector2D vec = CVector2D(10, 0);
+		m_pos -= vec;
+		m_img.SetSize(128 * 3, 32 * 2);
+	}
+	if (cnt <= 0) {
+		SetKill();
+	}
 }
 
-Attack::Attack(const CVector2D& p, bool flip,int type,int attack_no)
-	:Base(eType_Flame)
+Attack::Attack(const CVector2D& p, bool flip,int type,int attack_no)	:Base(eType_Flame)
 {
 	//‰æ‘œ•¡»
 	m_img = COPY_RESOURCE("Effect_Flame", CImage);
@@ -108,7 +135,7 @@ Attack::Attack(const CVector2D& p, bool flip,int type,int attack_no)
 	//’eÁ–ÅŠÔ
 	cnt = 60;
 	//—­‚ßŠÔ
-	Ccnt = 120;
+	Ccnt = 0;
 	//UŒ‚”Ô†
 	m_attack_no = rand();
 	//ƒ_ƒ[ƒW”Ô†
@@ -131,9 +158,15 @@ void Attack::Update()
 	case eState_Attack:
 		StateAttack();
 		break;
+	case eState_Attack2:
+		StateAttack2();
+		break;
+	case eState_Attack3:
+		StateAttack3();
+		break;
 	}
 
-
+	
 	
 }
 void Attack::Draw()

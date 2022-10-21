@@ -22,7 +22,7 @@ Game::Game() :Base(eType_Scene)
 	//Base::Add(new Enemy(CVector2D(2500, 800), false,eType_Enemy1));
 	//Base::Add(new Enemy(CVector2D(1280 + 256 * 2, 540), false,eType_Enemy2));
 	//Base::Add(new Enemy(CVector2D(1280 + 256 * 3, 540), false,eType_Enemy3));
-	Base::Add(new Enemy(CVector2D(1280 + 256 * 2, 540), false, eType_Enemy4));
+	//Base::Add(new Enemy(CVector2D(1280 + 256 * 2, 540), false, eType_Enemy4));
 	Base::Add(new Enemy(CVector2D(1280 + 256 * 5, 540), true, eType_Enemy5));
 	Base::Add(new Goal(CVector2D(2048, 540)));
 	Base::Add(new Item(CVector2D(2048, 940)));

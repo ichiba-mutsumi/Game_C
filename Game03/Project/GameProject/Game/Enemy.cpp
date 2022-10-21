@@ -9,7 +9,7 @@
 
 void Enemy::StateIdle(int type)
 {
-    
+
     m_pos.x--;
 
     //const float move_speed = 4;
@@ -17,23 +17,28 @@ void Enemy::StateIdle(int type)
     //bool move_flag = false;
 
     m_img.ChangeAnimation(0);
-    switch (EnemyType){
+    switch (EnemyType) {
 
     case eType_Enemy1:
     case eType_Enemy2:
     case eType_Enemy3:
         m_pos.x--;
-        
+
         break;
     case eType_Enemy4:
         if (abs(v.x) <= 300) {
             m_state = eState_Attack;
-       }
-        
+        }
+
+        break;
+
+    case eType_Enemy5:
+        if (abs(v.x) <= 300) {
+            m_state = eState_Attack;
+        }
+
         break;
     }
-
-
 
 }
 
@@ -59,12 +64,15 @@ void Enemy::StateDown(int type)
 
 void Enemy::StateAttack(int type)
 {
-    
+   
     m_img.ChangeAnimation(2, false);
-    m_ang = atan2(-v.y, v.x);
+    
+    
     //int type, const CVector2D& pos, float ang, float speed
-    Base::Add(new EnemyBullet(eType_Bullet, m_pos, m_ang, 4));
-      
+    Base* b = Base::FindObject(eType_Bullet);
+    if (!b) {
+        Base::Add(new EnemyBullet(eType_Bullet, m_pos, m_ang, 4));
+    }
     
 
     if (m_img.CheckAnimationEnd()) {
@@ -118,20 +126,16 @@ Base(eType_Enemy) {
         m_img.SetCenter(133, 226);
         hp = 200;
         break;
-    /*case eType_Enemy5:
-        m_img = COPY_RESOURCE("Dragon", CImage);
-        m_img.SetSize(262, 264);
-        m_rect = CRect(-64, -128, 64, 0);
-        m_img.SetCenter(133, 226);
-        hp = 200;
-        break;
-        */
+
      case eType_Enemy5:
         m_img = COPY_RESOURCE("Dragon", CImage);
+        //‘O‰ñ m_img.SetSize(460, 250);
         m_img.SetSize(460, 250);
-        m_rect = CRect(-288, 356, 78, 138);
-        m_img.SetCenter(328, -113);
-        hp = 400;
+        //‘O‰ñ  m_rect = CRect(-288, 356, 78, 138);
+        m_rect = CRect(-98, -190, 188, 0);
+        //‘O‰ñ  m_img.SetCenter(328, -113);
+        m_img.SetCenter(190, 240);
+        hp = 50;
      break;
     
     }
