@@ -59,12 +59,14 @@ void Enemy::StateDown(int type)
 
 void Enemy::StateAttack(int type)
 {
-    
+   
     m_img.ChangeAnimation(2, false);
-    m_ang = atan2(-v.y, v.x);
+    
     //int type, const CVector2D& pos, float ang, float speed
-    Base::Add(new EnemyBullet(eType_Bullet, m_pos, m_ang, 4));
-      
+    Base* b = Base::FindObject(eType_Bullet);
+    if (!b) {
+        Base::Add(new EnemyBullet(eType_Bullet, m_pos, m_ang, 4));
+    }
     
 
     if (m_img.CheckAnimationEnd()) {
